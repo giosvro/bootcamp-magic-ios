@@ -23,10 +23,4 @@ class TabBarController: UITabBarController {
         viewControllers = viewControllerList
     }
     
-//    let bookmarkViewController = BookmarksViewController()
-//    bookmarkViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .Bookmarks, tag: 1)
-//    let favoritesViewControllers = FavoritesViewController()
-//    favoritesViewControllers.tabBarItem = UITabBarItem(tabBarSystemItem: .Favorites, tag: 2)
-//    let viewControllerList = [ downloadViewController, bookmarkViewController, favoritesViewControllers ]
-//    viewControllers = viewControllerList
 }
