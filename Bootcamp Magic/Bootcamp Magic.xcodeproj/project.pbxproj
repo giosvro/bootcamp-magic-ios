@@ -21,6 +21,11 @@
 		07E9EB6A24756C2800F9500D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB6924756C2800F9500D /* AppCoordinator.swift */; };
 		07E9EB6C2475710300F9500D /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB6B2475710300F9500D /* FavoritesCoordinator.swift */; };
 		07E9EB6E247571B800F9500D /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB6D247571B800F9500D /* FeedCoordinator.swift */; };
+		07E9EB712475963F00F9500D /* ViewCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB702475963F00F9500D /* ViewCoding.swift */; };
+		07E9EB762475979900F9500D /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB752475979900F9500D /* FeedView.swift */; };
+		07E9EB782475988200F9500D /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB772475988200F9500D /* ViewDelegate.swift */; };
+		07E9EB7A247598AA00F9500D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB79247598AA00F9500D /* UIViewExtension.swift */; };
+		07E9EB7C2475A99A00F9500D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB7B2475A99A00F9500D /* FavoritesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,11 @@
 		07E9EB6924756C2800F9500D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		07E9EB6B2475710300F9500D /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		07E9EB6D247571B800F9500D /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
+		07E9EB702475963F00F9500D /* ViewCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoding.swift; sourceTree = "<group>"; };
+		07E9EB752475979900F9500D /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		07E9EB772475988200F9500D /* ViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
+		07E9EB79247598AA00F9500D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		07E9EB7B2475A99A00F9500D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +121,8 @@
 		07E9EB2B2475581400F9500D /* Bootcamp Magic */ = {
 			isa = PBXGroup;
 			children = (
+				07E9EB742475977500F9500D /* Views */,
+				07E9EB6F2475961F00F9500D /* ViewCode */,
 				07E9EB6624756B0300F9500D /* Coordinator */,
 				07E9EB5F2475632500F9500D /* Controllers */,
 				07E9EB2C2475581400F9500D /* AppDelegate.swift */,
@@ -160,6 +172,25 @@
 				07E9EB6D247571B800F9500D /* FeedCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		07E9EB6F2475961F00F9500D /* ViewCode */ = {
+			isa = PBXGroup;
+			children = (
+				07E9EB702475963F00F9500D /* ViewCoding.swift */,
+				07E9EB772475988200F9500D /* ViewDelegate.swift */,
+				07E9EB79247598AA00F9500D /* UIViewExtension.swift */,
+			);
+			path = ViewCode;
+			sourceTree = "<group>";
+		};
+		07E9EB742475977500F9500D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				07E9EB752475979900F9500D /* FeedView.swift */,
+				07E9EB7B2475A99A00F9500D /* FavoritesView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,9 +323,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E9EB782475988200F9500D /* ViewDelegate.swift in Sources */,
 				07E9EB6E247571B800F9500D /* FeedCoordinator.swift in Sources */,
 				07E9EB372475581400F9500D /* Bootcamp_Magic.xcdatamodeld in Sources */,
+				07E9EB712475963F00F9500D /* ViewCoding.swift in Sources */,
+				07E9EB7A247598AA00F9500D /* UIViewExtension.swift in Sources */,
+				07E9EB7C2475A99A00F9500D /* FavoritesView.swift in Sources */,
 				07E9EB632475642000F9500D /* FavoritesViewController.swift in Sources */,
+				07E9EB762475979900F9500D /* FeedView.swift in Sources */,
 				07E9EB2D2475581400F9500D /* AppDelegate.swift in Sources */,
 				07E9EB61247563DA00F9500D /* TabBarController.swift in Sources */,
 				07E9EB6A24756C2800F9500D /* AppCoordinator.swift in Sources */,

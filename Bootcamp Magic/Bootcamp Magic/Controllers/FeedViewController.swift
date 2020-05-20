@@ -10,23 +10,20 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.blue
-        self.title = "Feed"
-        // Do any additional setup after loading the view.
+    override func loadView() {
+        let view = FeedView()
+        view.delegate = self
+        self.view = view
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
-    */
+}
 
+extension FeedViewController: ViewDelegate {
+    func didButtonPressed() {
+        print("nada")
+    }
+    
 }

@@ -1,5 +1,5 @@
 //
-//  TabBarController.swift
+//  ViewDelegate.swift
 //  Bootcamp Magic
 //
 //  Created by mariaelena.silveira on 20/05/20.
@@ -8,10 +8,6 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+protocol ViewDelegate: AnyObject {
+    func didButtonPressed()
 }
