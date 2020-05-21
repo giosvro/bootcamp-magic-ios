@@ -47,7 +47,7 @@ extension MagicApi: EndPointType {
         case .types:
             return "types"
         case .cards(let page, let set, let type):
-            return "cards?page=\(page)&set=\(set)&type=\(type)"
+            return "cards?page=\(page)&set=\(set)&type=\(type)&contains=imageUrl"
         }
     }
     
