@@ -17,7 +17,7 @@ enum NetworkEnviroment {
 public enum MagicApi {
     case sets
     case types
-    case cards(_ page: Int,_ set: String,_ type: String)
+    case cards(_ page: Int,_ set: String,_ type: String,_ contains: String)
 }
 
 extension MagicApi: EndPointType {
@@ -46,8 +46,8 @@ extension MagicApi: EndPointType {
             return "sets"
         case .types:
             return "types"
-        case .cards(let page, let set, let type):
-            return "cards?page=\(page)&set=\(set)&type=\(type)&contains=imageUrl"
+        case .cards:
+            return "cards"
         }
     }
     
@@ -61,9 +61,9 @@ extension MagicApi: EndPointType {
             return .request
         case .types:
             return .request
-        case .cards(let page, let set, let type):
+        case .cards(let page, let set, let type, let constains):
             return .requestParameters(nil, ["page": "\(page)",
-                "sets": set, "types": type])
+                "set": set, "types": type, "contains": constains])
         }
     }
     
