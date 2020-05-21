@@ -21,7 +21,7 @@ enum NetworkResponse: String {
     case badRequest = "We could not process that action"
     case failed = "Network request failed"
     case noData = "The requested resource could not be found"
-    case unableToDecode = "We could not decote the response"
+    case unableToDecode = "We could not decode the response"
     case forbidden = "You exceeded the rate limit"
     case internalServerError = "We had a problem with our server. Please try again later"
     case serviceUnavailable = "We are temporarily offline for maintenance. Please try again later"
@@ -36,6 +36,8 @@ extension NetworkManager {
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
         switch response.statusCode {
+        case 200...299:
+            return .success
         case 400:
             return .failure(NetworkResponse.badRequest.rawValue)
         case 403:
@@ -55,10 +57,10 @@ extension NetworkManager {
         }
     }
     
-    func getAllCards(page: Int, set: String, type: String,
+    func getAllCards(page: Int, set: String, type: String, contains: String,
                      completion: @escaping (_ cards: [Card]?,_ error: String?) ->()) {
         
-        router.request(.cards(page, set, type)) { data, response, error in
+        router.request(.cards(page, set, type, contains)) { data, response, error in
             
             if error != nil {
                 completion(nil, "Please check your network connection")
@@ -73,7 +75,6 @@ extension NetworkManager {
                         completion(nil, NetworkResponse.noData.rawValue)
                         return
                     }
-                    
                     do {
                         let apiResponse = try JSONDecoder().decode(CardApiResponse.self, from: responseData)
                         completion(apiResponse.cards, nil)

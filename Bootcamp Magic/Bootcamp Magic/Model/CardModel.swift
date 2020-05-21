@@ -27,7 +27,7 @@ extension CardApiResponse: Decodable {
 struct Card {
     let id: String
     let name: String
-    let types: String
+    let types: [String]
     let set: String
     let imageUrl: String
 }
@@ -47,7 +47,7 @@ extension Card: Decodable {
         
         id = try cardContainer.decode(String.self, forKey: .id)
         name = try cardContainer.decode(String.self, forKey: .name)
-        types = try cardContainer.decode(String.self, forKey: .types)
+        types = try cardContainer.decode([String].self, forKey: .types)
         set = try cardContainer.decode(String.self, forKey: .set)
         imageUrl = try cardContainer.decode(String.self, forKey: .imageUrl)
     }
