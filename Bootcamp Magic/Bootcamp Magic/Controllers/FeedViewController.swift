@@ -11,6 +11,7 @@ import UIKit
 class FeedViewController: UIViewController {
 
     override func loadView() {
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         let view = FeedView()
         view.delegate = self
         self.view = view

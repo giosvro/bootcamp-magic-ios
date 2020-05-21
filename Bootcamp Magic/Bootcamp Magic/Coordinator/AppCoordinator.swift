@@ -38,8 +38,8 @@ class AppCoordinator: Coordinator {
         let favoriteViewController = favoritesCoordinator.rootViewController
         let feedViewController = feedCoordinator.rootViewController
         
-        let feedItem = UITabBarItem(title: "Feed", image: UIImage(), selectedImage: nil)
-        let FavoritesItem = UITabBarItem(title: "Favorites", image: UIImage(), selectedImage: nil)
+        let feedItem = UITabBarItem(title: "Feed", image: UIImage(named: "cards"), selectedImage: nil)
+        let FavoritesItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite"), selectedImage: nil)
         
         favoriteViewController.tabBarItem = FavoritesItem
         feedViewController.tabBarItem = feedItem

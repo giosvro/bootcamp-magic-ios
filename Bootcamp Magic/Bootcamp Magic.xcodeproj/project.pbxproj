@@ -26,6 +26,7 @@
 		07E9EB782475988200F9500D /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB772475988200F9500D /* ViewDelegate.swift */; };
 		07E9EB7A247598AA00F9500D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB79247598AA00F9500D /* UIViewExtension.swift */; };
 		07E9EB7C2475A99A00F9500D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB7B2475A99A00F9500D /* FavoritesView.swift */; };
+		07E9EB7F2476EFC100F9500D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		07E9EB772475988200F9500D /* ViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
 		07E9EB79247598AA00F9500D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		07E9EB7B2475A99A00F9500D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 				07E9EB702475963F00F9500D /* ViewCoding.swift */,
 				07E9EB772475988200F9500D /* ViewDelegate.swift */,
 				07E9EB79247598AA00F9500D /* UIViewExtension.swift */,
+				07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */,
 			);
 			path = ViewCode;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				07E9EB2F2475581400F9500D /* SceneDelegate.swift in Sources */,
 				07E9EB652475643F00F9500D /* FeedViewController.swift in Sources */,
 				07E9EB6C2475710300F9500D /* FavoritesCoordinator.swift in Sources */,
+				07E9EB7F2476EFC100F9500D /* UIImageViewExtension.swift in Sources */,
 				07E9EB6824756BB800F9500D /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

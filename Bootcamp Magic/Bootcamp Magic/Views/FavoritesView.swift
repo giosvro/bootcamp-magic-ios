@@ -10,12 +10,15 @@ import UIKit
 
 class FavoritesView: UIView {
     var titleLabel: UILabel
+    var blurredBackgroundImageView: UIImageView
     
     weak var delegate: ViewDelegate?
     
     override init(frame: CGRect) {
         titleLabel = UILabel()
+        blurredBackgroundImageView = UIImageView()
         super.init(frame: frame)
+        blurredBackgroundImageView.frame = frame
         setup()
     }
     
@@ -26,7 +29,7 @@ class FavoritesView: UIView {
 
 extension FavoritesView: ViewCoding {
     func hierarchyView() {
-        addView(titleLabel)
+        addView(blurredBackgroundImageView, titleLabel)
     }
     
     func constraintView() {
@@ -40,7 +43,8 @@ extension FavoritesView: ViewCoding {
     
     func aditionalConfigView() {
         titleLabel.backgroundColor = .cyan
-//        self.backgroundColor = .cyan
+        blurredBackgroundImageView.image = UIImage(named: "background")
+        blurredBackgroundImageView.blurImage()
     }
     
     

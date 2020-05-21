@@ -10,12 +10,15 @@ import UIKit
 
 class FeedView: UIView {
     var titleLabel: UILabel
+    var blurredBackgroundImageView: UIImageView
     
     weak var delegate:  ViewDelegate?
     
     override init(frame: CGRect) {
         titleLabel = UILabel()
+        blurredBackgroundImageView = UIImageView()
         super.init(frame: frame)
+        blurredBackgroundImageView.frame = frame
         setup()
     }
     
@@ -26,7 +29,7 @@ class FeedView: UIView {
 
 extension FeedView: ViewCoding {
     func hierarchyView() {
-        addView(titleLabel)
+        addView(blurredBackgroundImageView, titleLabel)
     }
     
     func constraintView() {
@@ -37,9 +40,12 @@ extension FeedView: ViewCoding {
              titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             ]
         )
+        
     }
     
     func aditionalConfigView() {
+        blurredBackgroundImageView.image = UIImage(named: "background")
+        blurredBackgroundImageView.blurImage()
         titleLabel.backgroundColor = .green
     }
     
