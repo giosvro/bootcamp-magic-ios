@@ -15,6 +15,7 @@ struct NetworkManager {
 }
 
 enum NetworkResponse: String {
+    
     case success
     case authenticationError = "You need to be authenticated first"
     case badRequest = "We could not process that action"
@@ -24,6 +25,14 @@ enum NetworkResponse: String {
     case forbidden = "You exceeded the rate limit"
     case internalServerError = "We had a problem with our server. Please try again later"
     case serviceUnavailable = "We are temporarily offline for maintenance. Please try again later"
+}
+
+enum Result<String> {
+    case success
+    case failure(String)
+}
+
+extension NetworkManager {
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
         switch response.statusCode {
@@ -45,9 +54,38 @@ enum NetworkResponse: String {
             return .failure(NetworkResponse.failed.rawValue)
         }
     }
-}
-
-enum Result<String> {
-    case sucess
-    case failure(String)
+    
+    func getAllCards(page: Int, set: String, type: String,
+                     completion: @escaping (_ cards: [Card]?,_ error: String?) ->()) {
+        
+        router.request(.cards(page, set, type)) { data, response, error in
+            
+            if error != nil {
+                completion(nil, "Please check your network connection")
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue)
+                        return
+                    }
+                    
+                    do {
+                        let apiResponse = try JSONDecoder().decode(CardApiResponse.self, from: responseData)
+                        completion(apiResponse.cards, nil)
+                    } catch {
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                    
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError)
+                }
+            }
+        }
+        
+    }
 }

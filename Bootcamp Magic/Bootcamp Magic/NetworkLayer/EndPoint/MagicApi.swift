@@ -1,5 +1,5 @@
 //
-//  MovieApi.swift
+//  MagicApi.swift
 //  Bootcamp Magic
 //
 //  Created by giovanni.s.barros on 20/05/20.
