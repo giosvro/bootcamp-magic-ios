@@ -9,13 +9,24 @@
 /* Begin PBXBuildFile section */
 		07E9EB2D2475581400F9500D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB2C2475581400F9500D /* AppDelegate.swift */; };
 		07E9EB2F2475581400F9500D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB2E2475581400F9500D /* SceneDelegate.swift */; };
-		07E9EB312475581400F9500D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB302475581400F9500D /* ViewController.swift */; };
-		07E9EB342475581400F9500D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07E9EB322475581400F9500D /* Main.storyboard */; };
 		07E9EB372475581400F9500D /* Bootcamp_Magic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB352475581400F9500D /* Bootcamp_Magic.xcdatamodeld */; };
 		07E9EB392475581600F9500D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07E9EB382475581600F9500D /* Assets.xcassets */; };
 		07E9EB3C2475581600F9500D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07E9EB3A2475581600F9500D /* LaunchScreen.storyboard */; };
 		07E9EB472475581600F9500D /* Bootcamp_MagicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB462475581600F9500D /* Bootcamp_MagicTests.swift */; };
 		07E9EB522475581600F9500D /* Bootcamp_MagicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB512475581600F9500D /* Bootcamp_MagicUITests.swift */; };
+		07E9EB61247563DA00F9500D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB60247563DA00F9500D /* TabBarController.swift */; };
+		07E9EB632475642000F9500D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB622475642000F9500D /* FavoritesViewController.swift */; };
+		07E9EB652475643F00F9500D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB642475643F00F9500D /* FeedViewController.swift */; };
+		07E9EB6824756BB800F9500D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB6724756BB800F9500D /* Coordinator.swift */; };
+		07E9EB6A24756C2800F9500D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB6924756C2800F9500D /* AppCoordinator.swift */; };
+		07E9EB6C2475710300F9500D /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB6B2475710300F9500D /* FavoritesCoordinator.swift */; };
+		07E9EB6E247571B800F9500D /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB6D247571B800F9500D /* FeedCoordinator.swift */; };
+		07E9EB712475963F00F9500D /* ViewCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB702475963F00F9500D /* ViewCoding.swift */; };
+		07E9EB762475979900F9500D /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB752475979900F9500D /* FeedView.swift */; };
+		07E9EB782475988200F9500D /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB772475988200F9500D /* ViewDelegate.swift */; };
+		07E9EB7A247598AA00F9500D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB79247598AA00F9500D /* UIViewExtension.swift */; };
+		07E9EB7C2475A99A00F9500D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB7B2475A99A00F9500D /* FavoritesView.swift */; };
+		07E9EB7F2476EFC100F9500D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +50,6 @@
 		07E9EB292475581400F9500D /* Bootcamp Magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bootcamp Magic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E9EB2C2475581400F9500D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07E9EB2E2475581400F9500D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		07E9EB302475581400F9500D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		07E9EB332475581400F9500D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		07E9EB362475581400F9500D /* Bootcamp_Magic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bootcamp_Magic.xcdatamodel; sourceTree = "<group>"; };
 		07E9EB382475581600F9500D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07E9EB3B2475581600F9500D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +60,19 @@
 		07E9EB4D2475581600F9500D /* Bootcamp MagicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bootcamp MagicUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E9EB512475581600F9500D /* Bootcamp_MagicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootcamp_MagicUITests.swift; sourceTree = "<group>"; };
 		07E9EB532475581600F9500D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07E9EB60247563DA00F9500D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		07E9EB622475642000F9500D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		07E9EB642475643F00F9500D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		07E9EB6724756BB800F9500D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		07E9EB6924756C2800F9500D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		07E9EB6B2475710300F9500D /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		07E9EB6D247571B800F9500D /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
+		07E9EB702475963F00F9500D /* ViewCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoding.swift; sourceTree = "<group>"; };
+		07E9EB752475979900F9500D /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		07E9EB772475988200F9500D /* ViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
+		07E9EB79247598AA00F9500D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		07E9EB7B2475A99A00F9500D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +123,12 @@
 		07E9EB2B2475581400F9500D /* Bootcamp Magic */ = {
 			isa = PBXGroup;
 			children = (
+				07E9EB742475977500F9500D /* Views */,
+				07E9EB6F2475961F00F9500D /* ViewCode */,
+				07E9EB6624756B0300F9500D /* Coordinator */,
+				07E9EB5F2475632500F9500D /* Controllers */,
 				07E9EB2C2475581400F9500D /* AppDelegate.swift */,
 				07E9EB2E2475581400F9500D /* SceneDelegate.swift */,
-				07E9EB302475581400F9500D /* ViewController.swift */,
-				07E9EB322475581400F9500D /* Main.storyboard */,
 				07E9EB382475581600F9500D /* Assets.xcassets */,
 				07E9EB3A2475581600F9500D /* LaunchScreen.storyboard */,
 				07E9EB3D2475581600F9500D /* Info.plist */,
@@ -129,6 +153,47 @@
 				07E9EB532475581600F9500D /* Info.plist */,
 			);
 			path = "Bootcamp MagicUITests";
+			sourceTree = "<group>";
+		};
+		07E9EB5F2475632500F9500D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				07E9EB60247563DA00F9500D /* TabBarController.swift */,
+				07E9EB622475642000F9500D /* FavoritesViewController.swift */,
+				07E9EB642475643F00F9500D /* FeedViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		07E9EB6624756B0300F9500D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				07E9EB6724756BB800F9500D /* Coordinator.swift */,
+				07E9EB6924756C2800F9500D /* AppCoordinator.swift */,
+				07E9EB6B2475710300F9500D /* FavoritesCoordinator.swift */,
+				07E9EB6D247571B800F9500D /* FeedCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		07E9EB6F2475961F00F9500D /* ViewCode */ = {
+			isa = PBXGroup;
+			children = (
+				07E9EB702475963F00F9500D /* ViewCoding.swift */,
+				07E9EB772475988200F9500D /* ViewDelegate.swift */,
+				07E9EB79247598AA00F9500D /* UIViewExtension.swift */,
+				07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */,
+			);
+			path = ViewCode;
+			sourceTree = "<group>";
+		};
+		07E9EB742475977500F9500D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				07E9EB752475979900F9500D /* FeedView.swift */,
+				07E9EB7B2475A99A00F9500D /* FavoritesView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +302,6 @@
 			files = (
 				07E9EB3C2475581600F9500D /* LaunchScreen.storyboard in Resources */,
 				07E9EB392475581600F9500D /* Assets.xcassets in Resources */,
-				07E9EB342475581400F9500D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,10 +326,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E9EB782475988200F9500D /* ViewDelegate.swift in Sources */,
+				07E9EB6E247571B800F9500D /* FeedCoordinator.swift in Sources */,
 				07E9EB372475581400F9500D /* Bootcamp_Magic.xcdatamodeld in Sources */,
-				07E9EB312475581400F9500D /* ViewController.swift in Sources */,
+				07E9EB712475963F00F9500D /* ViewCoding.swift in Sources */,
+				07E9EB7A247598AA00F9500D /* UIViewExtension.swift in Sources */,
+				07E9EB7C2475A99A00F9500D /* FavoritesView.swift in Sources */,
+				07E9EB632475642000F9500D /* FavoritesViewController.swift in Sources */,
+				07E9EB762475979900F9500D /* FeedView.swift in Sources */,
 				07E9EB2D2475581400F9500D /* AppDelegate.swift in Sources */,
+				07E9EB61247563DA00F9500D /* TabBarController.swift in Sources */,
+				07E9EB6A24756C2800F9500D /* AppCoordinator.swift in Sources */,
 				07E9EB2F2475581400F9500D /* SceneDelegate.swift in Sources */,
+				07E9EB652475643F00F9500D /* FeedViewController.swift in Sources */,
+				07E9EB6C2475710300F9500D /* FavoritesCoordinator.swift in Sources */,
+				07E9EB7F2476EFC100F9500D /* UIImageViewExtension.swift in Sources */,
+				07E9EB6824756BB800F9500D /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +377,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		07E9EB322475581400F9500D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				07E9EB332475581400F9500D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		07E9EB3A2475581600F9500D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
