@@ -7,3 +7,39 @@
 //
 
 import Foundation
+
+struct SetApiResponse {
+    var sets: [Set]
+}
+
+extension SetApiResponse: Decodable {
+    
+    private enum SetApiResponseCodingKeys: String, CodingKey {
+        case sets
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: SetApiResponseCodingKeys.self)
+        sets = try container.decode([Set].self, forKey: .sets)
+    }
+}
+
+struct Set {
+    let code: String
+    let name: String
+}
+
+extension Set: Decodable {
+    
+    enum SetCodingKeys: String, CodingKey {
+        case code
+        case name
+    }
+    
+    init(from decoder: Decoder) throws {
+        let cardContainer = try decoder.container(keyedBy: SetCodingKeys.self)
+        
+        code = try cardContainer.decode(String.self, forKey: .code)
+        name = try cardContainer.decode(String.self, forKey: .name)
+    }
+}
