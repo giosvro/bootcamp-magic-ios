@@ -64,7 +64,7 @@ extension MagicApi: EndPointType {
             return .request
         case .types:
             return .request
-        case .cards(let page, let set, let type):
+        case .cards(let page, let set, let type, let constains):
             return .requestParameters(nil, ["page": "\(page)",
                 "set": set, "types": type])
         case .cardsWithName(let name):

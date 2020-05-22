@@ -60,7 +60,7 @@ extension NetworkManager {
     func getAllCards(page: Int, set: String, type: String,
                      completion: @escaping (_ cards: [Card]?,_ error: String?) -> ()) {
         
-        router.request(.cards(page, set, type)) { data, response, error in
+        router.request(.cards(page, set, type, contains)) { data, response, error in
             
             if error != nil {
                 completion(nil, "Please check your network connection")
