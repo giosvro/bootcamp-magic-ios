@@ -28,6 +28,7 @@
 		07E9EB7C2475A99A00F9500D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB7B2475A99A00F9500D /* FavoritesView.swift */; };
 		07E9EB7F2476EFC100F9500D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */; };
 		07E9EB8524780CF900F9500D /* CardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB8424780CF900F9500D /* CardDetailsViewController.swift */; };
+		07E9EB8724783DA900F9500D /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB8624783DA900F9500D /* CardDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		07E9EB7B2475A99A00F9500D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		07E9EB8424780CF900F9500D /* CardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewController.swift; sourceTree = "<group>"; };
+		07E9EB8624783DA900F9500D /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			children = (
 				07E9EB752475979900F9500D /* FeedView.swift */,
 				07E9EB7B2475A99A00F9500D /* FavoritesView.swift */,
+				07E9EB8624783DA900F9500D /* CardDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				07E9EB712475963F00F9500D /* ViewCoding.swift in Sources */,
 				07E9EB7A247598AA00F9500D /* UIViewExtension.swift in Sources */,
 				07E9EB7C2475A99A00F9500D /* FavoritesView.swift in Sources */,
+				07E9EB8724783DA900F9500D /* CardDetailsView.swift in Sources */,
 				07E9EB632475642000F9500D /* FavoritesViewController.swift in Sources */,
 				07E9EB762475979900F9500D /* FeedView.swift in Sources */,
 				07E9EB2D2475581400F9500D /* AppDelegate.swift in Sources */,

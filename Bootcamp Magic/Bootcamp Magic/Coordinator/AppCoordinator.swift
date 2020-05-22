@@ -32,21 +32,29 @@ class AppCoordinator: Coordinator {
 
     private func setupTabBar() {
         
-        let favoritesCoordinator = FavoritesCoordinator()
-        childCoordinators.append(favoritesCoordinator)
-        let favoriteViewController = favoritesCoordinator.rootViewController
-        let FavoritesItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite"), selectedImage: nil)
-        favoriteViewController.tabBarItem = FavoritesItem
+        var controllers: [UIViewController] = []
         
         let feedCoordinator = FeedCoordinator()
         childCoordinators.append(feedCoordinator)
-        let feedViewController = feedCoordinator.rootViewController
-        let feedItem = UITabBarItem(title: "Feed", image: UIImage(named: "cards"), selectedImage: nil)
-        feedViewController.tabBarItem = feedItem
+
+        if let feedViewController = feedCoordinator.rootViewController as? FeedViewController {
+
+            let feedItem = UITabBarItem(title: "Feed", image: UIImage(named: "cards"), selectedImage: nil)
+            feedViewController.tabBarItem = feedItem
+            feedViewController.coordinator = feedCoordinator
+            controllers.append(feedViewController)
+        }
         
-        var controllers: [UIViewController] = []
-        controllers.append(feedViewController)
-        controllers.append(favoriteViewController)
+        let favoritesCoordinator = FavoritesCoordinator()
+        childCoordinators.append(favoritesCoordinator)
+        
+        if let favoriteViewController = favoritesCoordinator.rootViewController as? FavoritesViewController {
+
+            let FavoritesItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite"), selectedImage: nil)
+            favoriteViewController.tabBarItem = FavoritesItem
+            favoriteViewController.coordinator = favoritesCoordinator
+            controllers.append(favoriteViewController)
+        }
         
         guard let tabBarController = rootViewController as? TabBarController else { return }
         

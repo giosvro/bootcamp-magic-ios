@@ -10,9 +10,22 @@ import UIKit
 
 class CardDetailsViewController: UIViewController {
 
+    var coordinator: Coordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let view = CardDetailsView()
+        view.delegate = self
+        self.view = view
 
     }
 
+}
+
+extension CardDetailsViewController: ViewDelegate {
+    
+    func didButtonPressed() {
+        
+    }
+    
 }
