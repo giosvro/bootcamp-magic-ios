@@ -1,5 +1,5 @@
 //
-//  SetModel.swift
+//  CardSetModel.swift
 //  Bootcamp Magic
 //
 //  Created by giovanni.s.barros on 21/05/20.
@@ -9,7 +9,7 @@
 import Foundation
 
 struct SetApiResponse {
-    var sets: [Set]
+    var sets: [CardSet]
 }
 
 extension SetApiResponse: Decodable {
@@ -20,16 +20,16 @@ extension SetApiResponse: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: SetApiResponseCodingKeys.self)
-        sets = try container.decode([Set].self, forKey: .sets)
+        sets = try container.decode([CardSet].self, forKey: .sets)
     }
 }
 
-struct Set {
+struct CardSet {
     let code: String
     let name: String
 }
 
-extension Set: Decodable {
+extension CardSet: Decodable {
     
     enum SetCodingKeys: String, CodingKey {
         case code
