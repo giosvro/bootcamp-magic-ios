@@ -12,16 +12,12 @@ class AppCoordinator: Coordinator {
     
     var window: UIWindow
     var rootViewController: UIViewController
-    
-    private let favoritesCoordinator: FavoritesCoordinator
-    private let feedCoordinator: FeedCoordinator
+    var childCoordinators = [Coordinator]()
     
     init() {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         self.rootViewController = TabBarController()
-        self.favoritesCoordinator = FavoritesCoordinator()
-        self.feedCoordinator = FeedCoordinator()
     }
     
     func start() {
@@ -35,13 +31,17 @@ class AppCoordinator: Coordinator {
     }
 
     private func setupTabBar() {
+        
+        let favoritesCoordinator = FavoritesCoordinator()
+        childCoordinators.append(favoritesCoordinator)
         let favoriteViewController = favoritesCoordinator.rootViewController
-        let feedViewController = feedCoordinator.rootViewController
-        
-        let feedItem = UITabBarItem(title: "Feed", image: UIImage(named: "cards"), selectedImage: nil)
         let FavoritesItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite"), selectedImage: nil)
-        
         favoriteViewController.tabBarItem = FavoritesItem
+        
+        let feedCoordinator = FeedCoordinator()
+        childCoordinators.append(feedCoordinator)
+        let feedViewController = feedCoordinator.rootViewController
+        let feedItem = UITabBarItem(title: "Feed", image: UIImage(named: "cards"), selectedImage: nil)
         feedViewController.tabBarItem = feedItem
         
         var controllers: [UIViewController] = []

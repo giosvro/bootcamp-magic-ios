@@ -9,6 +9,8 @@
 import UIKit
 
 class FavoritesCoordinator: Coordinator {
+    
+    var childCoordinators = [Coordinator]()
     var rootViewController: UIViewController
     
     init() {
@@ -19,5 +21,8 @@ class FavoritesCoordinator: Coordinator {
         
     }
     
+    func presentCardDetails() {
+        
+    }
     
 }
