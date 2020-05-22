@@ -29,7 +29,7 @@ struct Card {
     let name: String
     let types: [String]
     let set: String
-    let imageUrl: String
+    let imageUrl: String?
 }
 
 extension Card: Decodable {
@@ -49,6 +49,6 @@ extension Card: Decodable {
         name = try cardContainer.decode(String.self, forKey: .name)
         types = try cardContainer.decode([String].self, forKey: .types)
         set = try cardContainer.decode(String.self, forKey: .set)
-        imageUrl = try cardContainer.decode(String.self, forKey: .imageUrl)
+        imageUrl = try? cardContainer.decode(String.self, forKey: .imageUrl)
     }
 }
