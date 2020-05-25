@@ -90,7 +90,7 @@ extension NetworkManager {
         }
     }
     
-    func getAllCardsWithName(name: String, contains: String,
+    func getAllCardsWithName(name: String,
                      completion: @escaping (_ cards: [Card]?,_ error: String?) -> ()) {
         
         router.request(.cardsWithName(name)) { data, response, error in
