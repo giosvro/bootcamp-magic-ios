@@ -36,6 +36,8 @@ class TabBarController: UITabBarController {
         UIGraphicsEndImageContext()
         self.tabBar.tintColor = .white
         self.tabBar.unselectedItemTintColor = .gray
+        
+        
     }
     
     

@@ -9,13 +9,15 @@
 import UIKit
 
 class FavoritesView: UIView {
-    var titleLabel: UILabel
-    var blurredBackgroundImageView: UIImageView
     
+    var button : UIButton
+    var searchBar: UISearchBar
+    var blurredBackgroundImageView: UIImageView
     weak var delegate: ViewDelegate?
     
     override init(frame: CGRect) {
-        titleLabel = UILabel()
+        button = UIButton()
+        searchBar = UISearchBar()
         blurredBackgroundImageView = UIImageView()
         super.init(frame: frame)
         blurredBackgroundImageView.frame = frame
@@ -29,23 +31,44 @@ class FavoritesView: UIView {
 
 extension FavoritesView: ViewCoding {
     func hierarchyView() {
-        addView(blurredBackgroundImageView, titleLabel)
+        addView(blurredBackgroundImageView, button, searchBar)
     }
     
     func constraintView() {
+
         NSLayoutConstraint.activate(
-            [titleLabel.widthAnchor.constraint(equalToConstant: 70),
-             titleLabel.heightAnchor.constraint(equalToConstant: 78),
-             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)]
+            [button.widthAnchor.constraint(equalToConstant: 80),
+             button.heightAnchor.constraint(equalToConstant: 50),
+             button.centerYAnchor.constraint(equalTo: centerYAnchor),
+             button.centerXAnchor.constraint(equalTo: centerXAnchor)
+            ]
+        )
+        
+        NSLayoutConstraint.activate(
+            [searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
+             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor)
+            ]
         )
     }
     
     func aditionalConfigView() {
-        titleLabel.backgroundColor = .cyan
+        searchBar.placeholder = "Search for cards"
+        searchBar.backgroundImage = UIImage()
+        searchBar.showsCancelButton = true
+        searchBar.tintColor = .white
+        
+        button.setTitle("tela de detalhes", for: .normal)
+        button.addTarget(self, action: #selector(showCardDetails(_:)), for: .touchUpInside)
+        button.backgroundColor = .white
+        
         blurredBackgroundImageView.image = UIImage(named: "background")
         blurredBackgroundImageView.blurImage()
     }
     
+    @objc private func showCardDetails(_ sender: UIButton) {
+        delegate?.didButtonPressed()
+    }
     
 }
+

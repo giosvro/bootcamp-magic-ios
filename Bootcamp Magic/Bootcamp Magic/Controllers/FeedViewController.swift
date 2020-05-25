@@ -10,8 +10,9 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
+    var coordinator: Coordinator?
+    
     override func loadView() {
-//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         let view = FeedView()
         view.delegate = self
         self.view = view
@@ -24,7 +25,10 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: ViewDelegate {
     func didButtonPressed() {
-        print("nada")
+        guard let coodinator = coordinator as? FeedCoordinator else {
+            return
+        }
+        coodinator.presentCardDetails()
     }
     
 }

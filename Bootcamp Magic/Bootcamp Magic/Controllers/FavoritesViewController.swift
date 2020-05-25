@@ -9,6 +9,8 @@
 import UIKit
 
 class FavoritesViewController: UIViewController {
+    
+    var coordinator: Coordinator?
 
     override func loadView() {
         let view = FavoritesView()
@@ -22,9 +24,12 @@ class FavoritesViewController: UIViewController {
 }
 
 extension FavoritesViewController: ViewDelegate {
+    
     func didButtonPressed() {
-        print("nada rolando ainda")
+        guard let coodinator = coordinator as? FavoritesCoordinator else {
+            return
+        }
+        coodinator.presentCardDetails()
     }
-    
-    
+
 }

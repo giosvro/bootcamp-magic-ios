@@ -9,6 +9,8 @@
 import UIKit
 
 class FeedCoordinator: Coordinator {
+    
+    var childCoordinators = [Coordinator]()
     var rootViewController: UIViewController
     
     init() {
@@ -17,5 +19,11 @@ class FeedCoordinator: Coordinator {
     
     func start() {
         
+    }
+    
+    public func presentCardDetails() {
+        let vc = CardDetailsViewController()
+        vc.coordinator = self
+        self.rootViewController.present(vc, animated: true, completion: nil)
     }
 }

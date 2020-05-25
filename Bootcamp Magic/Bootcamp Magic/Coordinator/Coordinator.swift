@@ -9,6 +9,8 @@
 import UIKit
 
 protocol Coordinator {
+    var childCoordinators: [Coordinator] { get }
     var rootViewController: UIViewController { get }
+    
     func start()
 }
