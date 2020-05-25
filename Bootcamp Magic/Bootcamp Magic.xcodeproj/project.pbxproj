@@ -14,6 +14,20 @@
 		07E9EB3C2475581600F9500D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07E9EB3A2475581600F9500D /* LaunchScreen.storyboard */; };
 		07E9EB472475581600F9500D /* Bootcamp_MagicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB462475581600F9500D /* Bootcamp_MagicTests.swift */; };
 		07E9EB522475581600F9500D /* Bootcamp_MagicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB512475581600F9500D /* Bootcamp_MagicUITests.swift */; };
+		091373232475619A0079003C /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091373222475619A0079003C /* EndPointType.swift */; };
+		09137325247562950079003C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137324247562950079003C /* HTTPMethod.swift */; };
+		09137327247564790079003C /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137326247564790079003C /* HTTPTask.swift */; };
+		09137329247567B90079003C /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137328247567B90079003C /* ParameterEncoding.swift */; };
+		0913732C24756AA40079003C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913732B24756AA40079003C /* NetworkError.swift */; };
+		0913732E24756B130079003C /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913732D24756B130079003C /* URLParameterEncoder.swift */; };
+		0913733024756C530079003C /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913732F24756C530079003C /* JSONParameterEncoder.swift */; };
+		0913733224756D070079003C /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913733124756D070079003C /* NetworkRouter.swift */; };
+		09137334247588010079003C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137333247588010079003C /* Router.swift */; };
+		09B1B8322475CB5900662B5E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8312475CB5900662B5E /* NetworkManager.swift */; };
+		09B1B8342475CDD300662B5E /* MagicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8332475CDD300662B5E /* MagicApi.swift */; };
+		09B1B8372476FA3C00662B5E /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8362476FA3C00662B5E /* CardModel.swift */; };
+		09B1B8392477052C00662B5E /* SetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8382477052C00662B5E /* SetModel.swift */; };
+		09B1B83B2477054200662B5E /* CardTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B83A2477054200662B5E /* CardTypeModel.swift */; };
 		07E9EB61247563DA00F9500D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB60247563DA00F9500D /* TabBarController.swift */; };
 		07E9EB632475642000F9500D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB622475642000F9500D /* FavoritesViewController.swift */; };
 		07E9EB652475643F00F9500D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB642475643F00F9500D /* FeedViewController.swift */; };
@@ -77,6 +91,20 @@
 		07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		07E9EB8424780CF900F9500D /* CardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewController.swift; sourceTree = "<group>"; };
 		07E9EB8624783DA900F9500D /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
+		091373222475619A0079003C /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		09137324247562950079003C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		09137326247564790079003C /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		09137328247567B90079003C /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		0913732B24756AA40079003C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		0913732D24756B130079003C /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		0913732F24756C530079003C /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		0913733124756D070079003C /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		09137333247588010079003C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		09B1B8312475CB5900662B5E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		09B1B8332475CDD300662B5E /* MagicApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicApi.swift; sourceTree = "<group>"; };
+		09B1B8362476FA3C00662B5E /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		09B1B8382477052C00662B5E /* SetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetModel.swift; sourceTree = "<group>"; };
+		09B1B83A2477054200662B5E /* CardTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +155,8 @@
 		07E9EB2B2475581400F9500D /* Bootcamp Magic */ = {
 			isa = PBXGroup;
 			children = (
+				09B1B8352476EED700662B5E /* Model */,
+				0913731D2475600F0079003C /* NetworkLayer */,
 				07E9EB742475977500F9500D /* Views */,
 				07E9EB6F2475961F00F9500D /* ViewCode */,
 				07E9EB6624756B0300F9500D /* Coordinator */,
@@ -157,6 +187,74 @@
 				07E9EB532475581600F9500D /* Info.plist */,
 			);
 			path = "Bootcamp MagicUITests";
+			sourceTree = "<group>";
+		};
+		0913731D2475600F0079003C /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				0913731E247560330079003C /* EndPoint */,
+				0913731F247560410079003C /* Manager */,
+				091373202475604C0079003C /* Service */,
+				09137321247560530079003C /* Encoding */,
+				0913732A24756A720079003C /* Error */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		0913731E247560330079003C /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				09B1B8332475CDD300662B5E /* MagicApi.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		0913731F247560410079003C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				09B1B8312475CB5900662B5E /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		091373202475604C0079003C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				091373222475619A0079003C /* EndPointType.swift */,
+				09137324247562950079003C /* HTTPMethod.swift */,
+				09137326247564790079003C /* HTTPTask.swift */,
+				0913733124756D070079003C /* NetworkRouter.swift */,
+				09137333247588010079003C /* Router.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		09137321247560530079003C /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				09137328247567B90079003C /* ParameterEncoding.swift */,
+				0913732D24756B130079003C /* URLParameterEncoder.swift */,
+				0913732F24756C530079003C /* JSONParameterEncoder.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		0913732A24756A720079003C /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				0913732B24756AA40079003C /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		09B1B8352476EED700662B5E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09B1B8362476FA3C00662B5E /* CardModel.swift */,
+				09B1B8382477052C00662B5E /* SetModel.swift */,
+				09B1B83A2477054200662B5E /* CardTypeModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		07E9EB5F2475632500F9500D /* Controllers */ = {
@@ -335,6 +433,8 @@
 				07E9EB782475988200F9500D /* ViewDelegate.swift in Sources */,
 				07E9EB8524780CF900F9500D /* CardDetailsViewController.swift in Sources */,
 				07E9EB6E247571B800F9500D /* FeedCoordinator.swift in Sources */,
+				09137327247564790079003C /* HTTPTask.swift in Sources */,
+				09B1B83B2477054200662B5E /* CardTypeModel.swift in Sources */,
 				07E9EB372475581400F9500D /* Bootcamp_Magic.xcdatamodeld in Sources */,
 				07E9EB712475963F00F9500D /* ViewCoding.swift in Sources */,
 				07E9EB7A247598AA00F9500D /* UIViewExtension.swift in Sources */,
@@ -342,7 +442,19 @@
 				07E9EB8724783DA900F9500D /* CardDetailsView.swift in Sources */,
 				07E9EB632475642000F9500D /* FavoritesViewController.swift in Sources */,
 				07E9EB762475979900F9500D /* FeedView.swift in Sources */,
+				09137329247567B90079003C /* ParameterEncoding.swift in Sources */,
+				09B1B8342475CDD300662B5E /* MagicApi.swift in Sources */,
+				07E9EB312475581400F9500D /* ViewController.swift in Sources */,
+				0913733024756C530079003C /* JSONParameterEncoder.swift in Sources */,
+				0913733224756D070079003C /* NetworkRouter.swift in Sources */,
+				09137325247562950079003C /* HTTPMethod.swift in Sources */,
 				07E9EB2D2475581400F9500D /* AppDelegate.swift in Sources */,
+				09B1B8372476FA3C00662B5E /* CardModel.swift in Sources */,
+				0913732C24756AA40079003C /* NetworkError.swift in Sources */,
+				09B1B8392477052C00662B5E /* SetModel.swift in Sources */,
+				091373232475619A0079003C /* EndPointType.swift in Sources */,
+				09B1B8322475CB5900662B5E /* NetworkManager.swift in Sources */,
+				0913732E24756B130079003C /* URLParameterEncoder.swift in Sources */,
 				07E9EB61247563DA00F9500D /* TabBarController.swift in Sources */,
 				07E9EB6A24756C2800F9500D /* AppCoordinator.swift in Sources */,
 				07E9EB2F2475581400F9500D /* SceneDelegate.swift in Sources */,
@@ -350,6 +462,7 @@
 				07E9EB6C2475710300F9500D /* FavoritesCoordinator.swift in Sources */,
 				07E9EB7F2476EFC100F9500D /* UIImageViewExtension.swift in Sources */,
 				07E9EB6824756BB800F9500D /* Coordinator.swift in Sources */,
+				09137334247588010079003C /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Bootcamp Magic/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -532,6 +646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Bootcamp Magic/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
