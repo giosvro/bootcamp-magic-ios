@@ -11,6 +11,7 @@ import UIKit
 class FeedViewController: UIViewController {
 
     var coordinator: Coordinator?
+    let feedViewModel = FeedViewModel()
     
     override func loadView() {
         let view = FeedView()
@@ -20,6 +21,7 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        feedViewModel.loadCards()
     }
 }
 
