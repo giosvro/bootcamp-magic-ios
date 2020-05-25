@@ -12,23 +12,45 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     let identiifier = "CardCollectionViewCell"
     
+    var cardImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
     var card: Card? {
         didSet {
             configureCard()
         }
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        contentView.addSubview(cardImage)
+        self.isUserInteractionEnabled = true
+        constraintView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private func configureCard(){
+        guard let urlImage = card?.imageUrl else {
+            return
+        }
+        self.cardImage.downloaded(from: urlImage, contentMode: .scaleAspectFit)
+    }
+    
+    private func constraintView() {
+        NSLayoutConstraint.activate(
+            [cardImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+             cardImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+             cardImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+             cardImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            ]
+        )
         
     }
-//    override init(frame: CGRect) {
-//        super.init(frame: .zero)
-//        self.isUserInteractionEnabled = true
-//
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
 }

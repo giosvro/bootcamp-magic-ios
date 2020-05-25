@@ -25,10 +25,6 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: ViewDelegate {
     func didButtonPressed() {
-//        guard let coodinator = coordinator as? FeedCoordinator else {
-//            return
-//        }
-//        coodinator.presentCardDetails()
     }
     
 }
