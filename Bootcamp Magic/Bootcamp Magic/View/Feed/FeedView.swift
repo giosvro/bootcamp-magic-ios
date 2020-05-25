@@ -12,6 +12,7 @@ class FeedView: UIView {
     
     var button : UIButton
     var searchBar: UISearchBar
+    var collectionView: UICollectionView
     var blurredBackgroundImageView: UIImageView
     
     weak var delegate:  ViewDelegate?
@@ -19,6 +20,7 @@ class FeedView: UIView {
     override init(frame: CGRect) {
         button = UIButton()
         searchBar = UISearchBar()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         blurredBackgroundImageView = UIImageView()
         super.init(frame: frame)
         blurredBackgroundImageView.frame = frame
@@ -32,7 +34,7 @@ class FeedView: UIView {
 
 extension FeedView: ViewCoding {
     func hierarchyView() {
-        addView(blurredBackgroundImageView, button, searchBar)
+        addView(blurredBackgroundImageView, button, searchBar, collectionView)
     }
     
     func constraintView() {
@@ -51,6 +53,14 @@ extension FeedView: ViewCoding {
             ]
         )
         
+        NSLayoutConstraint.activate(
+            [collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            ]
+        )
+        
     }
     
     func aditionalConfigView() {
@@ -65,6 +75,14 @@ extension FeedView: ViewCoding {
         
         blurredBackgroundImageView.image = UIImage(named: "background")
         blurredBackgroundImageView.blurImage()
+        
+        collectionView.setupCollectionView()
+        collectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: "cardCollectionViewCell")
+        
+        guard let feedViewController = delegate as? FeedViewController else {
+            return
+        }
+        collectionView.delegate = feedViewController
     }
     
     @objc private func showCardDetails(_ sender: UIButton) {
@@ -72,3 +90,5 @@ extension FeedView: ViewCoding {
     }
        
 }
+
+

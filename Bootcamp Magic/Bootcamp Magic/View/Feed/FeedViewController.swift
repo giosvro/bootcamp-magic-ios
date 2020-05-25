@@ -25,10 +25,20 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: ViewDelegate {
     func didButtonPressed() {
+//        guard let coodinator = coordinator as? FeedCoordinator else {
+//            return
+//        }
+//        coodinator.presentCardDetails()
+    }
+    
+}
+
+extension FeedViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let coodinator = coordinator as? FeedCoordinator else {
             return
         }
         coodinator.presentCardDetails()
     }
-    
+       
 }
