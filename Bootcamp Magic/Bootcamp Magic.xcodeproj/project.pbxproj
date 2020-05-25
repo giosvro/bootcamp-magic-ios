@@ -26,7 +26,7 @@
 		09B1B8322475CB5900662B5E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8312475CB5900662B5E /* NetworkManager.swift */; };
 		09B1B8342475CDD300662B5E /* MagicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8332475CDD300662B5E /* MagicApi.swift */; };
 		09B1B8372476FA3C00662B5E /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8362476FA3C00662B5E /* CardModel.swift */; };
-		09B1B8392477052C00662B5E /* SetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8382477052C00662B5E /* SetModel.swift */; };
+		09B1B8392477052C00662B5E /* CardSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8382477052C00662B5E /* CardSetModel.swift */; };
 		09B1B83B2477054200662B5E /* CardTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B83A2477054200662B5E /* CardTypeModel.swift */; };
 		07E9EB61247563DA00F9500D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB60247563DA00F9500D /* TabBarController.swift */; };
 		07E9EB632475642000F9500D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB622475642000F9500D /* FavoritesViewController.swift */; };
@@ -103,7 +103,7 @@
 		09B1B8312475CB5900662B5E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		09B1B8332475CDD300662B5E /* MagicApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicApi.swift; sourceTree = "<group>"; };
 		09B1B8362476FA3C00662B5E /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
-		09B1B8382477052C00662B5E /* SetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetModel.swift; sourceTree = "<group>"; };
+		09B1B8382477052C00662B5E /* CardSetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetModel.swift; sourceTree = "<group>"; };
 		09B1B83A2477054200662B5E /* CardTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,7 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				09B1B8362476FA3C00662B5E /* CardModel.swift */,
-				09B1B8382477052C00662B5E /* SetModel.swift */,
+				09B1B8382477052C00662B5E /* CardSetModel.swift */,
 				09B1B83A2477054200662B5E /* CardTypeModel.swift */,
 			);
 			path = Model;
@@ -451,7 +451,7 @@
 				07E9EB2D2475581400F9500D /* AppDelegate.swift in Sources */,
 				09B1B8372476FA3C00662B5E /* CardModel.swift in Sources */,
 				0913732C24756AA40079003C /* NetworkError.swift in Sources */,
-				09B1B8392477052C00662B5E /* SetModel.swift in Sources */,
+				09B1B8392477052C00662B5E /* CardSetModel.swift in Sources */,
 				091373232475619A0079003C /* EndPointType.swift in Sources */,
 				09B1B8322475CB5900662B5E /* NetworkManager.swift in Sources */,
 				0913732E24756B130079003C /* URLParameterEncoder.swift in Sources */,
