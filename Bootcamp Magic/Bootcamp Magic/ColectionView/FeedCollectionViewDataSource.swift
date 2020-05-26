@@ -16,21 +16,17 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         self.feedViewModel = viewModel
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return feedViewModel?.arrayCards?.count ?? 0
+        return 10//feedViewModel?.arrayCards?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cardCell = CardCollectionViewCell()
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cardCell.identiifier, for: indexPath) as? CardCollectionViewCell else {
-            fatalError("Wrong Cell ID")
-        }
-        
+        let cell = collectionView.dequeueReusableCell(CardCollectionViewCell.self, for: indexPath)
         cell.card = feedViewModel?.arrayCards?[indexPath.row]
         
         return cell
     }
-    
-    
     
 }

@@ -20,4 +20,15 @@ extension UICollectionView {
         self.backgroundColor = .clear
         
     }
+    
+    func dequeueReusableCell<T: UICollectionViewCell>(_: T.Type, for indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableCell(withReuseIdentifier: String(describing: T.self), for: indexPath) as? T else {
+            fatalError("Could not dequeue cell with identifier: \(T.self)")
+        }
+        return cell
+    }
+    
+    func register<T: UICollectionViewCell>(_: T.Type){
+        register(T.self, forCellWithReuseIdentifier: String(describing: T.self))
+    }
 }

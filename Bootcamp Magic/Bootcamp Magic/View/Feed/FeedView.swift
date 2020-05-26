@@ -77,7 +77,7 @@ extension FeedView: ViewCoding {
         blurredBackgroundImageView.blurImage()
         
         collectionView.setupCollectionView()
-        collectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: "cardCollectionViewCell")
+        collectionView.register(CardCollectionViewCell.self)
         
         guard let feedViewController = delegate as? FeedViewController else {
             return

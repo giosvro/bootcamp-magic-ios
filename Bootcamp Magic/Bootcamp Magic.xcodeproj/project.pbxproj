@@ -14,20 +14,6 @@
 		07E9EB3C2475581600F9500D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07E9EB3A2475581600F9500D /* LaunchScreen.storyboard */; };
 		07E9EB472475581600F9500D /* Bootcamp_MagicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB462475581600F9500D /* Bootcamp_MagicTests.swift */; };
 		07E9EB522475581600F9500D /* Bootcamp_MagicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB512475581600F9500D /* Bootcamp_MagicUITests.swift */; };
-		091373232475619A0079003C /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091373222475619A0079003C /* EndPointType.swift */; };
-		09137325247562950079003C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137324247562950079003C /* HTTPMethod.swift */; };
-		09137327247564790079003C /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137326247564790079003C /* HTTPTask.swift */; };
-		09137329247567B90079003C /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137328247567B90079003C /* ParameterEncoding.swift */; };
-		0913732C24756AA40079003C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913732B24756AA40079003C /* NetworkError.swift */; };
-		0913732E24756B130079003C /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913732D24756B130079003C /* URLParameterEncoder.swift */; };
-		0913733024756C530079003C /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913732F24756C530079003C /* JSONParameterEncoder.swift */; };
-		0913733224756D070079003C /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913733124756D070079003C /* NetworkRouter.swift */; };
-		09137334247588010079003C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137333247588010079003C /* Router.swift */; };
-		09B1B8322475CB5900662B5E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8312475CB5900662B5E /* NetworkManager.swift */; };
-		09B1B8342475CDD300662B5E /* MagicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8332475CDD300662B5E /* MagicApi.swift */; };
-		09B1B8372476FA3C00662B5E /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8362476FA3C00662B5E /* CardModel.swift */; };
-		09B1B8392477052C00662B5E /* CardSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8382477052C00662B5E /* CardSetModel.swift */; };
-		09B1B83B2477054200662B5E /* CardTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B83A2477054200662B5E /* CardTypeModel.swift */; };
 		07E9EB61247563DA00F9500D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB60247563DA00F9500D /* TabBarController.swift */; };
 		07E9EB632475642000F9500D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB622475642000F9500D /* FavoritesViewController.swift */; };
 		07E9EB652475643F00F9500D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB642475643F00F9500D /* FeedViewController.swift */; };
@@ -47,6 +33,7 @@
 		07E9EB8E247C0DB500F9500D /* FeedCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB8D247C0DB500F9500D /* FeedCollectionViewDataSource.swift */; };
 		07E9EB90247C0E0500F9500D /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB8F247C0E0500F9500D /* UICollectionViewExtension.swift */; };
 		07E9EB99247C127500F9500D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB98247C127500F9500D /* FeedViewModel.swift */; };
+		07E9EB9F247D59F600F9500D /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB9E247D59F600F9500D /* CoordinatorDelegate.swift */; };
 		091373232475619A0079003C /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091373222475619A0079003C /* EndPointType.swift */; };
 		09137325247562950079003C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137324247562950079003C /* HTTPMethod.swift */; };
 		09137327247564790079003C /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137326247564790079003C /* HTTPTask.swift */; };
@@ -59,7 +46,7 @@
 		09B1B8322475CB5900662B5E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8312475CB5900662B5E /* NetworkManager.swift */; };
 		09B1B8342475CDD300662B5E /* MagicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8332475CDD300662B5E /* MagicApi.swift */; };
 		09B1B8372476FA3C00662B5E /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8362476FA3C00662B5E /* CardModel.swift */; };
-		09B1B8392477052C00662B5E /* SetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8382477052C00662B5E /* SetModel.swift */; };
+		09B1B8392477052C00662B5E /* CardSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8382477052C00662B5E /* CardSetModel.swift */; };
 		09B1B83B2477054200662B5E /* CardTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B83A2477054200662B5E /* CardTypeModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +100,7 @@
 		07E9EB8D247C0DB500F9500D /* FeedCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		07E9EB8F247C0E0500F9500D /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		07E9EB98247C127500F9500D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		07E9EB9E247D59F600F9500D /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
 		091373222475619A0079003C /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		09137324247562950079003C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		09137326247564790079003C /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
@@ -177,7 +165,7 @@
 		07E9EB2B2475581400F9500D /* Bootcamp Magic */ = {
 			isa = PBXGroup;
 			children = (
-				07E9EB8C247C0D5900F9500D /* DataSources */,
+				07E9EB8C247C0D5900F9500D /* ColectionView */,
 				0913731D2475600F0079003C /* NetworkLayer */,
 				09B1B8352476EED700662B5E /* Model */,
 				07E9EB742475977500F9500D /* View */,
@@ -218,6 +206,7 @@
 				07E9EB6924756C2800F9500D /* AppCoordinator.swift */,
 				07E9EB6B2475710300F9500D /* FavoritesCoordinator.swift */,
 				07E9EB6D247571B800F9500D /* FeedCoordinator.swift */,
+				07E9EB9E247D59F600F9500D /* CoordinatorDelegate.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -246,12 +235,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		07E9EB8C247C0D5900F9500D /* DataSources */ = {
+		07E9EB8C247C0D5900F9500D /* ColectionView */ = {
 			isa = PBXGroup;
 			children = (
 				07E9EB8D247C0DB500F9500D /* FeedCollectionViewDataSource.swift */,
 			);
-			path = DataSources;
+			path = ColectionView;
 			sourceTree = "<group>";
 		};
 		07E9EB91247C116E00F9500D /* Feed */ = {
@@ -501,6 +490,7 @@
 				07E9EB6E247571B800F9500D /* FeedCoordinator.swift in Sources */,
 				09137327247564790079003C /* HTTPTask.swift in Sources */,
 				09B1B83B2477054200662B5E /* CardTypeModel.swift in Sources */,
+				07E9EB9F247D59F600F9500D /* CoordinatorDelegate.swift in Sources */,
 				07E9EB372475581400F9500D /* Bootcamp_Magic.xcdatamodeld in Sources */,
 				07E9EB712475963F00F9500D /* ViewCoding.swift in Sources */,
 				07E9EB7A247598AA00F9500D /* UIViewExtension.swift in Sources */,

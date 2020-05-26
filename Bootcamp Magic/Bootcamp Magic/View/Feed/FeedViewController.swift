@@ -10,12 +10,16 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
-    var coordinator: Coordinator?
     let feedViewModel = FeedViewModel()
+    var collectionView: UICollectionView?
     
     override func loadView() {
         let view = FeedView()
+        feedViewModel.delegate = self
         view.delegate = self
+        self.collectionView = view.collectionView
+        self.collectionView?.delegate = self
+        self.collectionView?.dataSource = FeedCollectionViewDataSource(viewModel: feedViewModel)
         self.view = view
     }
     
@@ -27,16 +31,25 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: ViewDelegate {
     func didButtonPressed() {
+        
     }
     
 }
 
 extension FeedViewController: UICollectionViewDelegate {
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let coodinator = coordinator as? FeedCoordinator else {
-            return
-        }
-        coodinator.presentCardDetails()
+//        guard let card = indexPath.item as? Card else {
+//            return
+//        }
+//        feedViewModel.showCard(card: card)
     }
-       
+    
+    func reloadCollection() {
+        DispatchQueue.main.async {
+            self.collectionView?.reloadData()
+            
+        }
+    }
 }

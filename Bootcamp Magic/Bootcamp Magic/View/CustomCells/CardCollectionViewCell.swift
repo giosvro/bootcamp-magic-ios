@@ -29,6 +29,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         super.init(frame: .zero)
         contentView.addSubview(cardImage)
         self.isUserInteractionEnabled = true
+        self.backgroundColor = .red //cor de background para teste 
         constraintView()
     }
     

@@ -13,20 +13,22 @@ class FeedViewModel {
     var arrayCards: [Card]?
     var typesCards: [String]?
     var networkManager = NetworkManager()
+    var coordinatorDelegate: CoordinatorDelegate?
     
     public func loadCards(){
         requestTypes()
-        
     }
     
     private func requestTypes(){
         networkManager.getAllTypes { (types, error) in
             guard let types = types else { return }
             self.typesCards = types
-            self.requestCards()
-            types.forEach({ (type) in
-                print(type)
-            })
+            DispatchQueue.main.async {
+                types.forEach({ (type) in
+                    print(type)
+                })
+                self.requestCards()
+            }
             
         }
     }
@@ -39,7 +41,16 @@ class FeedViewModel {
             cards.forEach({ (card) in
                 print(card)
             })
+            self.reloadCollection()
         }
     }
     
+    func showCard(card: Card) {
+        coordinatorDelegate?.selectCard(card: card)
+    }
+    
+    func reloadCollection(){
+        guard let delegate = delegate as? FeedViewController else { return }
+        delegate.reloadCollection()
+    }
 }
