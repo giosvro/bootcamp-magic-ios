@@ -12,6 +12,7 @@ class FeedViewController: UIViewController {
 
     let feedViewModel = FeedViewModel()
     var collectionView: UICollectionView?
+    var dataSource: FeedCollectionViewDataSource!
     
     override func loadView() {
         let view = FeedView()
@@ -19,7 +20,8 @@ class FeedViewController: UIViewController {
         view.delegate = self
         self.collectionView = view.collectionView
         self.collectionView?.delegate = self
-        self.collectionView?.dataSource = FeedCollectionViewDataSource(viewModel: feedViewModel)
+        self.dataSource = FeedCollectionViewDataSource(viewModel: feedViewModel)
+        self.collectionView?.dataSource = dataSource
         self.view = view
     }
     
@@ -38,12 +40,11 @@ extension FeedViewController: ViewDelegate {
 
 extension FeedViewController: UICollectionViewDelegate {
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let card = indexPath.item as? Card else {
-//            return
-//        }
-//        feedViewModel.showCard(card: card)
+        guard let card = indexPath.item as? Card else {
+            return
+        }
+        feedViewModel.showCard(card: card)
     }
     
     func reloadCollection() {
@@ -53,3 +54,4 @@ extension FeedViewController: UICollectionViewDelegate {
         }
     }
 }
+

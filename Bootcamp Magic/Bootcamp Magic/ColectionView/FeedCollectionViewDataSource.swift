@@ -19,7 +19,7 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10//feedViewModel?.arrayCards?.count ?? 0
+        return feedViewModel?.arrayCards?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

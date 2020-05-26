@@ -29,7 +29,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         super.init(frame: .zero)
         contentView.addSubview(cardImage)
         self.isUserInteractionEnabled = true
-        self.backgroundColor = .red //cor de background para teste 
+        self.backgroundColor = .clear
         constraintView()
     }
     
@@ -41,7 +41,9 @@ class CardCollectionViewCell: UICollectionViewCell {
         guard let urlImage = card?.imageUrl else {
             return
         }
-        self.cardImage.downloaded(from: urlImage, contentMode: .scaleAspectFit)
+        DispatchQueue.main.async {
+            self.cardImage.downloaded(from: urlImage, contentMode: .scaleAspectFit)
+        }
     }
     
     private func constraintView() {

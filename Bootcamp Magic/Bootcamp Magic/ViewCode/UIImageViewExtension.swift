@@ -36,8 +36,7 @@ extension UIImageView{
     }
         
     func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-        let correctUrl = "http://image.tmdb.org/t/p/w154/" + link
-        guard let url = URL(string: correctUrl) else { return }
+        guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)
     }
 

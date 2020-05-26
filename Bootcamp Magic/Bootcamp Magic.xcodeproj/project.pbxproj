@@ -34,6 +34,7 @@
 		07E9EB90247C0E0500F9500D /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB8F247C0E0500F9500D /* UICollectionViewExtension.swift */; };
 		07E9EB99247C127500F9500D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB98247C127500F9500D /* FeedViewModel.swift */; };
 		07E9EB9F247D59F600F9500D /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB9E247D59F600F9500D /* CoordinatorDelegate.swift */; };
+		07E9EBA6247DBAC100F9500D /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07E9EBA5247DBAC100F9500D /* Gotham-Black.otf */; };
 		091373232475619A0079003C /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091373222475619A0079003C /* EndPointType.swift */; };
 		09137325247562950079003C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137324247562950079003C /* HTTPMethod.swift */; };
 		09137327247564790079003C /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137326247564790079003C /* HTTPTask.swift */; };
@@ -101,6 +102,7 @@
 		07E9EB8F247C0E0500F9500D /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		07E9EB98247C127500F9500D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		07E9EB9E247D59F600F9500D /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
+		07E9EBA5247DBAC100F9500D /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.otf"; sourceTree = "<group>"; };
 		091373222475619A0079003C /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		09137324247562950079003C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		09137326247564790079003C /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		07E9EB2B2475581400F9500D /* Bootcamp Magic */ = {
 			isa = PBXGroup;
 			children = (
+				07E9EBA0247DB49A00F9500D /* Resources */,
 				07E9EB8C247C0D5900F9500D /* ColectionView */,
 				0913731D2475600F0079003C /* NetworkLayer */,
 				09B1B8352476EED700662B5E /* Model */,
@@ -285,6 +288,14 @@
 				07E9EB60247563DA00F9500D /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		07E9EBA0247DB49A00F9500D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				07E9EBA5247DBAC100F9500D /* Gotham-Black.otf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		0913731D2475600F0079003C /* NetworkLayer */ = {
@@ -460,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07E9EB3C2475581600F9500D /* LaunchScreen.storyboard in Resources */,
+				07E9EBA6247DBAC100F9500D /* Gotham-Black.otf in Resources */,
 				07E9EB392475581600F9500D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

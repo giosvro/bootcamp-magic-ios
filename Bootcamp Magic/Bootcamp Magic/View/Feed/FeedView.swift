@@ -10,16 +10,16 @@ import UIKit
 
 class FeedView: UIView {
     
-    var button : UIButton
     var searchBar: UISearchBar
+    var label: UILabel
     var collectionView: UICollectionView
     var blurredBackgroundImageView: UIImageView
     
     weak var delegate:  ViewDelegate?
     
     override init(frame: CGRect) {
-        button = UIButton()
         searchBar = UISearchBar()
+        label = UILabel()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         blurredBackgroundImageView = UIImageView()
         super.init(frame: frame)
@@ -34,29 +34,29 @@ class FeedView: UIView {
 
 extension FeedView: ViewCoding {
     func hierarchyView() {
-        addView(blurredBackgroundImageView, button, searchBar, collectionView)
+        addView(blurredBackgroundImageView, searchBar, label, collectionView)
     }
     
     func constraintView() {
-        NSLayoutConstraint.activate(
-            [button.heightAnchor.constraint(equalToConstant: 50),
-             button.widthAnchor.constraint(equalToConstant: 50),
-             button.centerYAnchor.constraint(equalTo: centerYAnchor),
-             button.centerXAnchor.constraint(equalTo: centerXAnchor),
-            ]
-        )
         
         NSLayoutConstraint.activate(
             [searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor)
+             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
             ]
         )
         
         NSLayoutConstraint.activate(
-            [collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            [label.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
+             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22)
+            ]
+        )
+        
+        NSLayoutConstraint.activate(
+            [collectionView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
+             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
+             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -12),
              collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
             ]
         )
@@ -64,14 +64,17 @@ extension FeedView: ViewCoding {
     }
     
     func aditionalConfigView() {
+        
+        label.text = "How about these cards?"
+        label.textColor = .white
+        let font = UIFont(name: "Gotham-Black", size: 35.0)
+        label.font = font
+        label.numberOfLines = 2
+        
         searchBar.placeholder = "Search for cards"
         searchBar.backgroundImage = UIImage()
         searchBar.showsCancelButton = true
         searchBar.tintColor = .white
-        
-        button.setTitle("tela de detalhes", for: .normal)
-        button.addTarget(self, action: #selector(showCardDetails(_:)), for: .touchUpInside)
-        button.backgroundColor = .cyan
         
         blurredBackgroundImageView.image = UIImage(named: "background")
         blurredBackgroundImageView.blurImage()
@@ -85,10 +88,6 @@ extension FeedView: ViewCoding {
         collectionView.delegate = feedViewController
     }
     
-    @objc private func showCardDetails(_ sender: UIButton) {
-           delegate?.didButtonPressed()
-    }
-       
 }
 
 

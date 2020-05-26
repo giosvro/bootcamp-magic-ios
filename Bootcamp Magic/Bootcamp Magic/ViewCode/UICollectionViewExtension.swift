@@ -13,12 +13,12 @@ extension UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 10, left: 7, bottom: 10, right: 7)
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.size.width*0.30, height: (UIScreen.main.bounds.size.width*0.30)*1.5)
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 8
+        layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.size.width*0.29, height: (UIScreen.main.bounds.size.width*0.29)*1.4)
         self.collectionViewLayout = layout
         self.backgroundColor = .clear
-        
+
     }
     
     func dequeueReusableCell<T: UICollectionViewCell>(_: T.Type, for indexPath: IndexPath) -> T {
