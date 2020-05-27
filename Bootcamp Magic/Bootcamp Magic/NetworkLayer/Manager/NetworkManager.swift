@@ -14,174 +14,68 @@ struct NetworkManager {
     private let router = Router<MagicApi>()
 }
 
-enum NetworkResponse: String {
-    
-    case success
-    case authenticationError = "You need to be authenticated first"
-    case badRequest = "We could not process that action"
-    case failed = "Network request failed"
-    case noData = "The requested resource could not be found"
-    case unableToDecode = "We could not decode the response"
-    case forbidden = "You exceeded the rate limit"
-    case internalServerError = "We had a problem with our server. Please try again later"
-    case serviceUnavailable = "We are temporarily offline for maintenance. Please try again later"
+enum NetworkResponse: Error {
+    case badRequest
+    case forbidden
+    case internalServerError
+    case serviceUnavailable
+    case notConnected
+    case timeout
+    case internalError
+    case unknown
 }
 
-enum Result<String> {
-    case success
-    case failure(String)
-}
-
-extension NetworkManager {
+extension NetworkManager: HTTPServicesProtocol {
     
-    fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
-        switch response.statusCode {
-        case 200...299:
-            return .success
-        case 400:
-            return .failure(NetworkResponse.badRequest.rawValue)
-        case 403:
-            return .failure(NetworkResponse.forbidden.rawValue)
-        case 404:
-            return .failure(NetworkResponse.noData.rawValue)
-        case 500:
-            return .failure(NetworkResponse.internalServerError.rawValue)
-        case 503:
-            return .failure(NetworkResponse.serviceUnavailable.rawValue)
-        case 401...500:
-            return .failure(NetworkResponse.authenticationError.rawValue)
-        case 501...599:
-            return .failure(NetworkResponse.badRequest.rawValue)
+    func makeRequest<T: Decodable>(endpoint: MagicApi, completion: @escaping RequestCallback<T>) {
+
+        router.request(endpoint) { (data, response, error) in
+            if let error = error {
+                let nsError = error as NSError
+                completion(.failure(self.parseError(with: nsError.code)))
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                !Array(200...300).contains(response.statusCode) {
+                completion(.failure(self.parseError(with: response.statusCode)))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.badRequest))
+                return
+            }
+            
+            self.treatSucess(data: data, completion: completion)
+        }
+    }
+    
+    func cancelTasks() {
+        router.cancel()
+    }
+    
+    private func treatSucess<T: Decodable>(data: Data, completion: RequestCallback<T>) {
+        do {
+            let object = try JSONDecoder().decode(T.self, from: data)
+            completion(.success(object))
+        } catch {
+            completion(.failure(.badRequest))
+        }
+    }
+    
+    func parseError(with code: Int) -> NetworkResponse {
+        switch code {
+        case NSURLErrorNotConnectedToInternet:
+            return .notConnected
+        case NSURLErrorTimedOut:
+            return .timeout
+        case 400...499:
+            return .badRequest
+        case 500...599:
+            return .internalError
         default:
-            return .failure(NetworkResponse.failed.rawValue)
-        }
-    }
-    
-    func getAllCards(page: Int, set: String, type: String,
-                     completion: @escaping (_ cards: [Card]?,_ error: String?) -> ()) {
-        
-        router.request(.cards(page, set, type)) { data, response, error in
-            
-            if error != nil {
-                completion(nil, "Please check your network connection")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    do {
-                        let apiResponse = try JSONDecoder().decode(CardApiResponse.self,
-                                                                   from: responseData)
-                        completion(apiResponse.cards, nil)
-                    } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
-                    
-                case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
-                }
-            }
-        }
-    }
-    
-    func getAllCardsWithName(name: String,
-                     completion: @escaping (_ cards: [Card]?,_ error: String?) -> ()) {
-        
-        router.request(.cardsWithName(name)) { data, response, error in
-            
-            if error != nil {
-                completion(nil, "Please check your network connection")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    do {
-                        let apiResponse = try JSONDecoder().decode(CardApiResponse.self,
-                                                                   from: responseData)
-                        completion(apiResponse.cards, nil)
-                    } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
-                    
-                case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
-                }
-            }
-        }
-    }
-    
-    func getAllSets(completion: @escaping (_ sets: [CardSet]?,_ error: String?) -> ()) {
-        router.request(.sets) { (data, response, error) in
-            
-            if error != nil {
-                completion(nil, "Please check your network connection")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    do {
-                        let apiResponse = try JSONDecoder().decode(SetApiResponse.self,
-                                                                   from: responseData)
-                        completion(apiResponse.sets, nil)
-                    } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
-                    
-                case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
-                }
-            }
-        }
-    }
-    
-    func getAllTypes(completion: @escaping (_ sets: [String]?,_ error: String?) -> ()) {
-        router.request(.types) { (data, response, error) in
-            
-            if error != nil {
-                completion(nil, "Please check your network connection")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                
-                switch result {
-                case .success:
-                    guard let responseData = data else {
-                        completion(nil, NetworkResponse.noData.rawValue)
-                        return
-                    }
-                    do {
-                        let apiResponse = try JSONDecoder().decode(CardTypeApiResponse.self,
-                                                                   from: responseData)
-                        completion(apiResponse.types, nil)
-                    } catch {
-                        completion(nil, NetworkResponse.unableToDecode.rawValue)
-                    }
-                    
-                case .failure(let networkFailureError):
-                    completion(nil, networkFailureError)
-                }
-            }
+            return .unknown
         }
     }
 }
