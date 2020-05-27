@@ -27,3 +27,12 @@ class FeedCoordinator: Coordinator {
         self.rootViewController.present(vc, animated: true, completion: nil)
     }
 }
+
+extension FeedCoordinator: CoordinatorDelegate {
+    func selectCard(card: Card) {
+//        Implementar o envio do card
+        presentCardDetails()
+    }
+    
+    
+}
