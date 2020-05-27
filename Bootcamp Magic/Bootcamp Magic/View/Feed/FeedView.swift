@@ -12,6 +12,7 @@ class FeedView: UIView {
     
     var searchBar: UISearchBar
     var label: UILabel
+    var activityView: UIView
     var collectionView: UICollectionView
     var blurredBackgroundImageView: UIImageView
     
@@ -22,6 +23,7 @@ class FeedView: UIView {
         label = UILabel()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         blurredBackgroundImageView = UIImageView()
+        activityView = UIView()
         super.init(frame: frame)
         blurredBackgroundImageView.frame = frame
         setup()
@@ -34,7 +36,7 @@ class FeedView: UIView {
 
 extension FeedView: ViewCoding {
     func hierarchyView() {
-        addView(blurredBackgroundImageView, searchBar, label, collectionView)
+        addView(blurredBackgroundImageView, searchBar, label, collectionView, activityView)
     }
     
     func constraintView() {
@@ -61,6 +63,12 @@ extension FeedView: ViewCoding {
             ]
         )
         
+        NSLayoutConstraint.activate(
+            [activityView.centerXAnchor.constraint(equalTo: centerXAnchor),
+             activityView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            ]
+        )
+        
     }
     
     func aditionalConfigView() {
@@ -79,8 +87,11 @@ extension FeedView: ViewCoding {
         blurredBackgroundImageView.image = UIImage(named: "background")
         blurredBackgroundImageView.blurImage()
         
+        activityView.activityStartAnimating()
+        
         collectionView.setupCollectionView()
         collectionView.register(CardCollectionViewCell.self)
+        collectionView.isHidden = true
         
         guard let feedViewController = delegate as? FeedViewController else {
             return
