@@ -12,8 +12,8 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     let identiifier = "CardCollectionViewCell"
     
-    var cardImage: UIImageView = {
-        let imageView = UIImageView()
+    var cardImage: CardImageView = {
+        let imageView = CardImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         return imageView
@@ -42,6 +42,7 @@ class CardCollectionViewCell: UICollectionViewCell {
             return
         }
         DispatchQueue.main.async {
+            self.cardImage.imageUrl = urlImage
             self.cardImage.downloaded(from: urlImage, contentMode: .scaleAspectFit)
         }
     }
@@ -55,5 +56,9 @@ class CardCollectionViewCell: UICollectionViewCell {
             ]
         )
         
+    }
+    
+    override func prepareForReuse() {
+        self.cardImage.image = nil
     }
 }
