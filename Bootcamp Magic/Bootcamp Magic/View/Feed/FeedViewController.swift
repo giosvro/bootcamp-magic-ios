@@ -18,6 +18,7 @@ class FeedViewController: UIViewController {
         let view = FeedView()
         feedViewModel.delegate = self
         view.delegate = self
+        view.searchBar.delegate = self
         self.collectionView = view.collectionView
         self.collectionView?.delegate = self
         self.dataSource = FeedCollectionViewDataSource(viewModel: feedViewModel)
@@ -42,6 +43,13 @@ extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         feedViewModel.showCard(item: indexPath.item)
+    }
+    
+    func prepareToReloadCollection() {
+        DispatchQueue.main.async {
+            self.collectionView?.isHidden = true
+            self.view.activityStartAnimating()
+        }
     }
     
     func reloadCollection() {
@@ -88,5 +96,21 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
-
+extension FeedViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count%3 == 0 {
+            feedViewModel.searchCardsWith(name: searchText)
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else { return }
+        feedViewModel.searchCardsWith(name: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        feedViewModel.prepareToReloadCollection()
+        feedViewModel.loadCards()
+    }
+}
