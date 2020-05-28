@@ -14,6 +14,8 @@ class FeedViewController: UIViewController {
     var collectionView: UICollectionView?
     var dataSource: FeedCollectionViewDataSource!
     
+    private let headerId = "HeaderId"
+    
     override func loadView() {
         let view = FeedView()
         feedViewModel.delegate = self
@@ -22,6 +24,7 @@ class FeedViewController: UIViewController {
         self.collectionView?.delegate = self
         self.dataSource = FeedCollectionViewDataSource(viewModel: feedViewModel)
         self.collectionView?.dataSource = dataSource
+        self.collectionView?.register(Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         self.view = view
     }
     
@@ -57,17 +60,13 @@ extension FeedViewController: UICollectionViewDelegate {
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let sectionHeader = UICollectionReusableView()
-        let label: UILabel = {
-            let label: UILabel = UILabel()
-            label.textColor = .white
-            label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-            label.text = "teste"
-            label.sizeToFit()
-            return label
-        }()
-        sectionHeader.addSubview(label)
-        return sectionHeader
+
+        print("sera que vai?")
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! Header
+        header.label?.text = "header"
+        
+        return header
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -86,7 +85,12 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 
         return CGSize(width: cellWidth, height: cellHeight)
     }
+    
+    
 }
 
+class Header: UICollectionReusableView {
+    var label: UILabel?
+}
 
 
