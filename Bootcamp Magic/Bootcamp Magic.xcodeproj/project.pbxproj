@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07BD6536248161970098DA99 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BD6535248161970098DA99 /* UISearchBarExtension.swift */; };
 		07E9EB2D2475581400F9500D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB2C2475581400F9500D /* AppDelegate.swift */; };
 		07E9EB2F2475581400F9500D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB2E2475581400F9500D /* SceneDelegate.swift */; };
 		07E9EB372475581400F9500D /* Bootcamp_Magic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB352475581400F9500D /* Bootcamp_Magic.xcdatamodeld */; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07BD6535248161970098DA99 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
 		07E9EB292475581400F9500D /* Bootcamp Magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bootcamp Magic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E9EB2C2475581400F9500D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07E9EB2E2475581400F9500D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				07E9EB79247598AA00F9500D /* UIViewExtension.swift */,
 				07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */,
 				07E9EB8F247C0E0500F9500D /* UICollectionViewExtension.swift */,
+				07BD6535248161970098DA99 /* UISearchBarExtension.swift */,
 			);
 			path = ViewCode;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				07E9EB2F2475581400F9500D /* SceneDelegate.swift in Sources */,
 				07E9EB652475643F00F9500D /* FeedViewController.swift in Sources */,
 				07E9EB8E247C0DB500F9500D /* FeedCollectionViewDataSource.swift in Sources */,
+				07BD6536248161970098DA99 /* UISearchBarExtension.swift in Sources */,
 				07E9EB6C2475710300F9500D /* FavoritesCoordinator.swift in Sources */,
 				07E9EB7F2476EFC100F9500D /* UIImageViewExtension.swift in Sources */,
 				07E9EB6824756BB800F9500D /* Coordinator.swift in Sources */,

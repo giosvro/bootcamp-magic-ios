@@ -79,10 +79,7 @@ extension FeedView: ViewCoding {
         label.font = font
         label.numberOfLines = 2
         
-        searchBar.placeholder = "Search for cards"
-        searchBar.backgroundImage = UIImage()
-        searchBar.showsCancelButton = true
-        searchBar.tintColor = .white
+        searchBar.configureSearchBar()
         
         blurredBackgroundImageView.image = UIImage(named: "background")
         blurredBackgroundImageView.blurImage()
