@@ -94,6 +94,19 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 
         return CGSize(width: cellWidth, height: cellHeight)
     }
+    
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let currentVerticalOffset = scrollView.contentOffset.y
+        let maximumVerticalOffset = scrollView.contentSize.height - scrollView.frame.height
+        let percentageVerticalOffset = maximumVerticalOffset * 0.5
+        if currentVerticalOffset >= percentageVerticalOffset {
+            feedViewModel.loadMoreCards()
+        }
+
+    }
+    
+
 }
 
 extension FeedViewController: UISearchBarDelegate {
