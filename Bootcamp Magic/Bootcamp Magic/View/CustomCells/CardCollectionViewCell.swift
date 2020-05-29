@@ -10,12 +10,21 @@ import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
     
-    let identiifier = "CardCollectionViewCell"
+    var nameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.isHidden = true
+        return label
+    }()
     
     var cardImage: CardImageView = {
         let imageView = CardImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 8
         return imageView
     }()
     
@@ -27,7 +36,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        contentView.addSubview(cardImage)
+        contentView.addView(cardImage, nameLabel)
         self.isUserInteractionEnabled = true
         self.backgroundColor = .clear
         constraintView()
@@ -38,12 +47,19 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
 
     private func configureCard(){
-        guard let urlImage = card?.imageUrl else {
-            return
-        }
-        DispatchQueue.main.async {
-            self.cardImage.imageUrl = urlImage
-            self.cardImage.downloaded(from: urlImage, contentMode: .scaleAspectFit)
+        guard let card = card else { return }
+        
+        if let urlImage = card.imageUrl  {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.cardImage.imageUrl = urlImage
+                self.cardImage.downloaded(from: urlImage, contentMode: .scaleAspectFit)
+                self.nameLabel.isHidden = true
+            }
+        } else {
+            cardImage.image = UIImage(named: "place-holder")
+            nameLabel.text = card.name
+            nameLabel.isHidden = false
         }
     }
     
@@ -56,6 +72,12 @@ class CardCollectionViewCell: UICollectionViewCell {
             ]
         )
         
+        NSLayoutConstraint.activate(
+            [nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant:  13),
+             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -13),
+             nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 35)
+            ]
+        )
     }
     
     override func prepareForReuse() {
