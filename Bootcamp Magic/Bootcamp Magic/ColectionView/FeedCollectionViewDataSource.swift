@@ -21,12 +21,15 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        guard let categoryCount = feedViewModel?.sectionsCollection else { return 1}
+        let sections = categoryCount + 1
+        print("sections----- \(sections )")
+        return sections
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        var view: UICollectionReusableView? = nil
+        var view = UICollectionReusableView()
         
         if kind == UICollectionView.elementKindSectionHeader {
             guard let reusableview = collectionView.dequeueReusableSupplementaryView(
@@ -37,11 +40,13 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
             
             view = reusableview
             
-            if indexPath.section == 0 {
-                reusableview.label.text = "Creature"
-            }
+            guard let types = feedViewModel?.types else { return view }
+            guard let iterator = feedViewModel?.iteratorType else { return view }
+        
+            reusableview.label.text = types[iterator]
+            
         }
-        return view!
+        return view
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

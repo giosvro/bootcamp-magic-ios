@@ -18,6 +18,7 @@ class FeedViewModel {
     var page = 1
     var iteratorType = 0
     var iteratorSet = 0
+    var sectionsCollection = 0
     var requestStatusFlag = false // in request or not
     
     public func loadCards(){
@@ -80,15 +81,22 @@ class FeedViewModel {
 //                    response.cards.forEach { (card) in
 //                        print(card.name)
 //                    }
-                    if cards.count == 50 {
-                        self.page += 1
-                    } else if cards.count == 0 {
-                        self.upDateIteratiors()
-                        
-                    } else {
+                    print("cardCount::::: \(cards.count)")
+                    print("iteratorType::::: \(self.iteratorType)")
+                    if cards.count == 100{
                         print("============== loaded cards")
+                        self.page += 1
                         self.arrayCards?.append(contentsOf: cards)
                         self.reloadCollection()
+                    } else if cards.count == 0 {
+                        self.upDateIteratiors()
+                        self.requestCards()
+                    } else {
+                        print("============== loaded cards")
+                        self.upDateIteratiors()
+                        self.arrayCards?.append(contentsOf: cards)
+                        self.reloadCollection()
+                        self.sectionsCollection += 1
                     }
                 }
             case .failure(let error):
@@ -101,12 +109,14 @@ class FeedViewModel {
     private func upDateIteratiors(){
         guard let types = types else { return }
         
-        if iteratorType < types.count {
+        if iteratorType < types.count - 1 {
             iteratorType += 1
+            
         } else {
             iteratorSet += 1
+            iteratorType = 0
         }
-        requestCards()
+        page = 1
     }
     
     private func requestCardWithName(_ name: String) {

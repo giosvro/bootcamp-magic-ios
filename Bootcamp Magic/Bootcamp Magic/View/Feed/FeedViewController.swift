@@ -18,7 +18,6 @@ class FeedViewController: UIViewController {
         let view = FeedView()
         feedViewModel.delegate = self
         view.delegate = self
-        view.searchBar.delegate = self
         self.collectionView = view.collectionView
         self.collectionView?.delegate = self
         self.dataSource = FeedCollectionViewDataSource(viewModel: feedViewModel)
