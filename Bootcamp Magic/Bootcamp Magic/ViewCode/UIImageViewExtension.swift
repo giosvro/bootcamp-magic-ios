@@ -8,14 +8,17 @@
 
 import UIKit
 
-extension UIImageView{
+let imageCache = NSCache<NSString, UIImage>()
+
+extension UIImageView {
+    
     func blurImage()
     {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
 
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] 
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(blurEffectView)
     }
 }

@@ -41,7 +41,7 @@ class AppCoordinator: Coordinator {
 
             let feedItem = UITabBarItem(title: "Feed", image: UIImage(named: "cards"), selectedImage: nil)
             feedViewController.tabBarItem = feedItem
-            feedViewController.coordinator = feedCoordinator
+            feedViewController.feedViewModel.coordinatorDelegate = feedCoordinator
             controllers.append(feedViewController)
         }
         

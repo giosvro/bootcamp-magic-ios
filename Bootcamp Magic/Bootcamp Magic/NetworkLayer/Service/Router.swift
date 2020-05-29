@@ -34,7 +34,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
         
         var request = URLRequest(url: route.baseURL.appendingPathComponent(route.path),
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-                                 timeoutInterval: 10.0)
+                                 timeoutInterval: 60.0)
         
         request.httpMethod = route.httpMethod.rawValue
         
