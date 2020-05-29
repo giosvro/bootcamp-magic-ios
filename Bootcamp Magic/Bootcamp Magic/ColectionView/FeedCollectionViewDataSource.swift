@@ -16,10 +16,32 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         self.feedViewModel = viewModel
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return feedViewModel?.arrayCards?.count ?? 0
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        var view: UICollectionReusableView? = nil
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let reusableview = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind, withReuseIdentifier: "\(CardsHeaderView.self)",
+                for: indexPath) as? CardsHeaderView else {
+                return UICollectionReusableView()
+            }
+            
+            view = reusableview
+            
+            if indexPath.section == 0 {
+                reusableview.label.text = "Creature"
+            }
+        }
+        return view!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -28,5 +50,4 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         
         return cell
     }
-    
 }
