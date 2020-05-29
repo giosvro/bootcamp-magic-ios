@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07BD6536248161970098DA99 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BD6535248161970098DA99 /* UISearchBarExtension.swift */; };
 		07E9EB2D2475581400F9500D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB2C2475581400F9500D /* AppDelegate.swift */; };
 		07E9EB2F2475581400F9500D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB2E2475581400F9500D /* SceneDelegate.swift */; };
 		07E9EB372475581400F9500D /* Bootcamp_Magic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07E9EB352475581400F9500D /* Bootcamp_Magic.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 		0913733224756D070079003C /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913733124756D070079003C /* NetworkRouter.swift */; };
 		09137334247588010079003C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137333247588010079003C /* Router.swift */; };
 		09328D332481571700EB0804 /* CardsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D322481571700EB0804 /* CardsHeaderView.swift */; };
+		09328D312480719D00EB0804 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D302480719D00EB0804 /* CardImageView.swift */; };
 		0942424D247D56DD0046FBD8 /* HTTPServicesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0942424C247D56DD0046FBD8 /* HTTPServicesProtocol.swift */; };
 		09B1B8322475CB5900662B5E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8312475CB5900662B5E /* NetworkManager.swift */; };
 		09B1B8342475CDD300662B5E /* MagicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8332475CDD300662B5E /* MagicApi.swift */; };
@@ -71,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07BD6535248161970098DA99 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
 		07E9EB292475581400F9500D /* Bootcamp Magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bootcamp Magic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E9EB2C2475581400F9500D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07E9EB2E2475581400F9500D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 		0913733124756D070079003C /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		09137333247588010079003C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		09328D322481571700EB0804 /* CardsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsHeaderView.swift; sourceTree = "<group>"; };
+		09328D302480719D00EB0804 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		0942424C247D56DD0046FBD8 /* HTTPServicesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServicesProtocol.swift; sourceTree = "<group>"; };
 		09B1B8312475CB5900662B5E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		09B1B8332475CDD300662B5E /* MagicApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicApi.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				07E9EB3A2475581600F9500D /* LaunchScreen.storyboard */,
 				07E9EB3D2475581600F9500D /* Info.plist */,
 				07E9EB352475581400F9500D /* Bootcamp_Magic.xcdatamodeld */,
+				09328D302480719D00EB0804 /* CardImageView.swift */,
 			);
 			path = "Bootcamp Magic";
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				07E9EB79247598AA00F9500D /* UIViewExtension.swift */,
 				07E9EB7E2476EFC100F9500D /* UIImageViewExtension.swift */,
 				07E9EB8F247C0E0500F9500D /* UICollectionViewExtension.swift */,
+				07BD6535248161970098DA99 /* UISearchBarExtension.swift */,
 			);
 			path = ViewCode;
 			sourceTree = "<group>";
@@ -513,6 +519,7 @@
 				07E9EB712475963F00F9500D /* ViewCoding.swift in Sources */,
 				07E9EB7A247598AA00F9500D /* UIViewExtension.swift in Sources */,
 				07E9EB7C2475A99A00F9500D /* FavoritesView.swift in Sources */,
+				09328D312480719D00EB0804 /* CardImageView.swift in Sources */,
 				07E9EB90247C0E0500F9500D /* UICollectionViewExtension.swift in Sources */,
 				07E9EB8724783DA900F9500D /* CardDetailsView.swift in Sources */,
 				07E9EB632475642000F9500D /* FavoritesViewController.swift in Sources */,
@@ -537,6 +544,7 @@
 				07E9EB2F2475581400F9500D /* SceneDelegate.swift in Sources */,
 				07E9EB652475643F00F9500D /* FeedViewController.swift in Sources */,
 				07E9EB8E247C0DB500F9500D /* FeedCollectionViewDataSource.swift in Sources */,
+				07BD6536248161970098DA99 /* UISearchBarExtension.swift in Sources */,
 				07E9EB6C2475710300F9500D /* FavoritesCoordinator.swift in Sources */,
 				07E9EB7F2476EFC100F9500D /* UIImageViewExtension.swift in Sources */,
 				07E9EB6824756BB800F9500D /* Coordinator.swift in Sources */,
@@ -709,6 +717,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Bootcamp Magic/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -727,6 +736,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Bootcamp Magic/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

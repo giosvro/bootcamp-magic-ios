@@ -53,10 +53,7 @@ extension FavoritesView: ViewCoding {
     }
     
     func aditionalConfigView() {
-        searchBar.placeholder = "Search for cards"
-        searchBar.backgroundImage = UIImage()
-        searchBar.showsCancelButton = true
-        searchBar.tintColor = .white
+        searchBar.configureSearchBar()
         
         button.setTitle("tela de detalhes", for: .normal)
         button.addTarget(self, action: #selector(showCardDetails(_:)), for: .touchUpInside)

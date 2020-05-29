@@ -18,6 +18,7 @@ class FeedViewController: UIViewController {
         let view = FeedView()
         feedViewModel.delegate = self
         view.delegate = self
+        view.searchBar.delegate = self
         self.collectionView = view.collectionView
         self.collectionView?.delegate = self
         self.dataSource = FeedCollectionViewDataSource(viewModel: feedViewModel)
@@ -51,6 +52,13 @@ extension FeedViewController: UICollectionViewDelegate {
         feedViewModel.showCard(item: indexPath.item)
     }
     
+    func prepareToReloadCollection() {
+        DispatchQueue.main.async {
+            self.collectionView?.isHidden = true
+            self.view.activityStartAnimating()
+        }
+    }
+    
     func reloadCollection() {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
@@ -77,9 +85,20 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: cellWidth, height: cellHeight)
     }
+    
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let currentVerticalOffset = scrollView.contentOffset.y
+        let maximumVerticalOffset = scrollView.contentSize.height - scrollView.frame.height
+        let percentageVerticalOffset = maximumVerticalOffset * 0.5
+        if currentVerticalOffset >= percentageVerticalOffset {
+            feedViewModel.loadMoreCards()
+        }
+
+    }
+    
+
 }
-
-
 
 //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //        print("////////////// sera que vai?")
