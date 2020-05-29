@@ -12,69 +12,101 @@ class FeedViewModel {
     var delegate: ViewDelegate?
     var arrayCards: [Card]?
     var types: [String]?
+    var sets: [CardSet]?
     var networkManager = NetworkManager()
     var coordinatorDelegate: CoordinatorDelegate?
+    var page = 1
+    var iteratorType = 0
+    var iteratorSet = 0
+    var requestStatusFlag = false // in request or not
     
     public func loadCards(){
+        self.arrayCards = []
         requestTypes()
     }
     
     private func requestTypes(){
         networkManager.makeRequest(endpoint: .types) { (result: Result<CardTypeApiResponse, NetworkResponse>) in
+            print("============== loaded types")
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    response.types.forEach { (type) in
-                        print(type)
-                    }
+//                    response.types.forEach { (type) in
+//                        print(type)
+//                    }
                     self.types = response.types
-                    self.requestCards()
+                    self.requestSets()
                 }
             case .failure(let error):
                 print(error)
             }
             
         }
+
+    }
+    
+    private func requestSets() {
         
-        //        networkManager.getAllTypes { (types, error) in
-        //            guard let types = types else { return }
-        //            self.typesCards = types
-        //            DispatchQueue.main.async {
-        //                types.forEach({ (type) in
-        //                    print(type)
-        //                })
-        //                self.requestCards()
-        //            }
-        //
-        //        }
+        networkManager.makeRequest(endpoint: .sets) { (result: Result<SetApiResponse, NetworkResponse>) in
+            print("============== loaded sets")
+            switch result {
+            case .success(let response):
+//                response.sets.forEach { (sets) in
+//                    print(sets)
+//                }
+                self.sets = response.sets
+                self.requestCards()
+            case .failure(let error):
+                print(error)
+            }
+        }
+
     }
     
     private func requestCards(){
-        guard let type = types?.first else { return }
+        guard let sets = sets else { return }
+        guard let types = types else { return }
         
-        networkManager.makeRequest(endpoint: .cards(1, "KTK", type)) { (result: Result<CardApiResponse, NetworkResponse>) in
+        let type = types[iteratorType]
+        let setCard = sets[iteratorSet].code
+        
+        requestStatusFlag = true
+        networkManager.makeRequest(endpoint: .cards(page, setCard, type)) { (result: Result<CardApiResponse, NetworkResponse>) in
+           
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    response.cards.forEach { (card) in
-                        print(card.name)
+                    let cards = response.cards
+//                    response.cards.forEach { (card) in
+//                        print(card.name)
+//                    }
+                    if cards.count == 50 {
+                        self.page += 1
+                    } else if cards.count == 0 {
+                        self.upDateIteratiors()
+                        
+                    } else {
+                        print("============== loaded cards")
+                        self.arrayCards?.append(contentsOf: cards)
+                        self.reloadCollection()
                     }
-                    self.arrayCards = response.cards
-                    self.reloadCollection()
                 }
             case .failure(let error):
                 print("->", error)
             }
         }
         
-        //        networkManager.getAllCards(page: 1, set: "KTK", type: type) { (cards, error) in
-        //            guard let cards = cards else { return }
-        //            self.arrayCards = cards
-        //            cards.forEach({ (card) in
-        //                print(card)
-        //            })
-        //            self.reloadCollection()
-        //        }
+    }
+    
+    private func upDateIteratiors(){
+        guard let types = types else { return }
+        
+        if iteratorType < types.count {
+            iteratorType += 1
+        } else {
+            iteratorSet += 1
+        }
+        requestCards()
     }
     
     private func requestCardWithName(_ name: String) {
@@ -90,6 +122,12 @@ class FeedViewModel {
             case .failure(let error):
                 self.feedViewErrorHandler(error: error)
             }
+        }
+    }
+    
+    func loadMoreCards(){
+        if !requestStatusFlag {
+            requestCards()
         }
     }
     
@@ -112,6 +150,7 @@ class FeedViewModel {
     }
     
     func reloadCollection(){
+        requestStatusFlag = false
         guard let delegate = delegate as? FeedViewController else { return }
         delegate.reloadCollection()
     }
