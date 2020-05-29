@@ -28,6 +28,8 @@ enum NetworkResponse: Error {
 extension NetworkManager: HTTPServicesProtocol {
     
     func makeRequest<T: Decodable>(endpoint: MagicApi, completion: @escaping RequestCallback<T>) {
+        
+        self.cancelTasks()
 
         router.request(endpoint) { (data, response, error) in
             if let error = error {
