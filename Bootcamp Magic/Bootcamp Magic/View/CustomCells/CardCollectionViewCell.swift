@@ -10,8 +10,6 @@ import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
     
-    let identiifier = "CardCollectionViewCell"
-    
     var cardImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,6 +39,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         guard let urlImage = card?.imageUrl else {
             return
         }
+        
         DispatchQueue.main.async {
             self.cardImage.downloaded(from: urlImage, contentMode: .scaleAspectFit)
         }
