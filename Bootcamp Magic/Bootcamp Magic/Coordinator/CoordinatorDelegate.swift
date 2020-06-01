@@ -9,5 +9,5 @@
 import UIKit
 
 protocol CoordinatorDelegate {
-    func selectCard(card: Card)
+    func selectCard(card: Card, cardImage: UIImage?)
 }
