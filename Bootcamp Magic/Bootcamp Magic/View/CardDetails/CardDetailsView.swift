@@ -15,7 +15,6 @@ class CardDetailsView: UIView {
     var cardImage: CardImageView = {
         let imageView = CardImageView()
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .red
         return imageView
     }()
     

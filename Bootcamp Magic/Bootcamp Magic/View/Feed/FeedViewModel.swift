@@ -94,11 +94,11 @@ class FeedViewModel {
     }
     
     
-    func showCard(item: Int) {
+    func showCard(item: Int, cardImage: UIImage?) {
         guard let card = arrayCards?[item] else {
             return
         }
-        coordinatorDelegate?.selectCard(card: card)
+        coordinatorDelegate?.selectCard(card: card, cardImage: cardImage)
     }
     
     func searchCardsWith(name: String) {

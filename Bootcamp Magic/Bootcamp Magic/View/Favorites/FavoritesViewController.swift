@@ -29,7 +29,7 @@ extension FavoritesViewController: ViewDelegate {
         guard let coodinator = coordinator as? FavoritesCoordinator else {
             return
         }
-        coodinator.presentCardDetails()
+//        coodinator.presentCardDetails()
     }
 
 }

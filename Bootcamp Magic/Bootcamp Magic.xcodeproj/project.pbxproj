@@ -47,6 +47,7 @@
 		09137334247588010079003C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137333247588010079003C /* Router.swift */; };
 		09328D312480719D00EB0804 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D302480719D00EB0804 /* CardImageView.swift */; };
 		09328D39248528E000EB0804 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D38248528E000EB0804 /* Strings.swift */; };
+		09328D3B24853D9300EB0804 /* CardDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D3A24853D9300EB0804 /* CardDetailsViewModel.swift */; };
 		0942424D247D56DD0046FBD8 /* HTTPServicesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0942424C247D56DD0046FBD8 /* HTTPServicesProtocol.swift */; };
 		09B1B8322475CB5900662B5E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8312475CB5900662B5E /* NetworkManager.swift */; };
 		09B1B8342475CDD300662B5E /* MagicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8332475CDD300662B5E /* MagicApi.swift */; };
@@ -119,6 +120,7 @@
 		09137333247588010079003C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		09328D302480719D00EB0804 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		09328D38248528E000EB0804 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		09328D3A24853D9300EB0804 /* CardDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewModel.swift; sourceTree = "<group>"; };
 		0942424C247D56DD0046FBD8 /* HTTPServicesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServicesProtocol.swift; sourceTree = "<group>"; };
 		09B1B8312475CB5900662B5E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		09B1B8332475CDD300662B5E /* MagicApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicApi.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			children = (
 				07E9EB8424780CF900F9500D /* CardDetailsViewController.swift */,
 				07E9EB8624783DA900F9500D /* CardDetailsView.swift */,
+				09328D3A24853D9300EB0804 /* CardDetailsViewModel.swift */,
 			);
 			path = CardDetails;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				0913733224756D070079003C /* NetworkRouter.swift in Sources */,
 				09137325247562950079003C /* HTTPMethod.swift in Sources */,
 				07E9EB2D2475581400F9500D /* AppDelegate.swift in Sources */,
+				09328D3B24853D9300EB0804 /* CardDetailsViewModel.swift in Sources */,
 				09B1B8372476FA3C00662B5E /* CardModel.swift in Sources */,
 				0913732C24756AA40079003C /* NetworkError.swift in Sources */,
 				09B1B8392477052C00662B5E /* CardSetModel.swift in Sources */,
