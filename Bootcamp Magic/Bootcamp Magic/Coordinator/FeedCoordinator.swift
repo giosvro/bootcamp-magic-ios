@@ -30,6 +30,7 @@ class FeedCoordinator: Coordinator {
 
 extension FeedCoordinator: CoordinatorDelegate {
     func selectCard(card: Card) {
+        print(card)
 //        Implementar o envio do card
         presentCardDetails()
     }

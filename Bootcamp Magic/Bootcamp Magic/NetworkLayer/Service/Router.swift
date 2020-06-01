@@ -16,7 +16,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
         
         do {
             let request = try self.buildRequest(from: route)
-            print("///// url::::  \(request.url)")
+            print("// url:::: \(request.url)")
             task = session.dataTask(with: request, completionHandler: { data, response, error in
                 completion(data, response, error)
             })

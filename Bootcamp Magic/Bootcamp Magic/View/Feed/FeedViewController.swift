@@ -48,7 +48,7 @@ extension FeedViewController: ViewDelegate {
 extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        feedViewModel.showCard(item: indexPath.item)
+        feedViewModel.showCard(indexPath: indexPath)
     }
     
     func prepareToReloadCollection() {
@@ -96,31 +96,4 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 
     }
     
-
 }
-
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        print("////////////// sera que vai?")
-//        if kind == UICollectionView.elementKindSectionHeader {
-//             let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! SectionHeader
-//             sectionHeader.label.text = "Teste"
-//             return sectionHeader
-//        } else { //No footer in this case but can add option for that
-//             return UICollectionReusableView()
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        print("////////////// header size")
-//        return CGSize(width: collectionView.frame.width, height: 40)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-//        print("////////////// footer")
-//        return CGSize(width: collectionView.frame.width, height: 40)
-//
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 8
-//    }

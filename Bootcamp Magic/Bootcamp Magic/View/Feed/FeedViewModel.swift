@@ -11,6 +11,7 @@ import UIKit
 class FeedViewModel {
     var delegate: ViewDelegate?
     var arrayCards: [Card]?
+    var arrayCollectionCards: [[Card]] = []
     var types: [String]?
     var sets: [CardSet]?
     var networkManager = NetworkManager()
@@ -18,8 +19,9 @@ class FeedViewModel {
     var page = 1
     var iteratorType = 0
     var iteratorSet = 0
-    var sectionsCollection = 0
     var requestStatusFlag = false // in request or not
+    var interatorTypeChanged = true
+    var currentSectionType: [String] = []
     
     public func loadCards(){
         self.arrayCards = []
@@ -32,9 +34,6 @@ class FeedViewModel {
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-//                    response.types.forEach { (type) in
-//                        print(type)
-//                    }
                     self.types = response.types
                     self.requestSets()
                 }
@@ -52,9 +51,6 @@ class FeedViewModel {
             print("============== loaded sets")
             switch result {
             case .success(let response):
-//                response.sets.forEach { (sets) in
-//                    print(sets)
-//                }
                 self.sets = response.sets
                 self.requestCards()
             case .failure(let error):
@@ -78,32 +74,47 @@ class FeedViewModel {
             case .success(let response):
                 DispatchQueue.main.async {
                     let cards = response.cards
-//                    response.cards.forEach { (card) in
-//                        print(card.name)
-//                    }
-                    print("cardCount::::: \(cards.count)")
-                    print("iteratorType::::: \(self.iteratorType)")
-                    if cards.count == 100{
-                        print("============== loaded cards")
-                        self.page += 1
-                        self.arrayCards?.append(contentsOf: cards)
-                        self.reloadCollection()
-                    } else if cards.count == 0 {
-                        self.upDateIteratiors()
-                        self.requestCards()
-                    } else {
-                        print("============== loaded cards")
-                        self.upDateIteratiors()
-                        self.arrayCards?.append(contentsOf: cards)
-                        self.reloadCollection()
-                        self.sectionsCollection += 1
-                    }
+                    self.manageData(cards: cards, type: type)
                 }
             case .failure(let error):
                 print("->", error)
             }
         }
         
+    }
+    
+    private func manageData(cards: [Card], type: String) {
+        print("cardCount     ::::: \(cards.count)")
+        print("iteratorType  ::::: \(self.iteratorType)")
+        
+        let indice = arrayCollectionCards.count - 1
+        
+        if cards.count == 100 {
+            print("============== loaded cards")
+            page += 1
+            arrayCards?.append(contentsOf: cards)
+            reloadCollection()
+            if interatorTypeChanged {
+                arrayCollectionCards.append(cards)
+                currentSectionType.append(type)
+                interatorTypeChanged = false
+            } else {
+                arrayCollectionCards[indice] += cards
+            }
+        } else if cards.count == 0 {
+            upDateIteratiors()
+            requestCards()
+        } else {
+            print("============== loaded cards")
+            if interatorTypeChanged {
+                arrayCollectionCards.append(cards)
+                currentSectionType.append(type)
+            } else {
+                arrayCollectionCards[indice] += cards
+            }
+            reloadCollection()
+            upDateIteratiors()
+        }
     }
     
     private func upDateIteratiors(){
@@ -116,7 +127,9 @@ class FeedViewModel {
             iteratorSet += 1
             iteratorType = 0
         }
+        interatorTypeChanged = true
         page = 1
+        
     }
     
     private func requestCardWithName(_ name: String) {
@@ -142,10 +155,8 @@ class FeedViewModel {
     }
     
     
-    func showCard(item: Int) {
-        guard let card = arrayCards?[item] else {
-            return
-        }
+    func showCard(indexPath: IndexPath) {
+        let card = arrayCollectionCards[indexPath.section][indexPath.row]
         coordinatorDelegate?.selectCard(card: card)
     }
     

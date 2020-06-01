@@ -11,20 +11,20 @@ import UIKit
 class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     var feedViewModel: FeedViewModel?
+    var sections: Int?
     
     init(viewModel: FeedViewModel) {
         self.feedViewModel = viewModel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return feedViewModel?.arrayCards?.count ?? 0
+        guard let arrayCollectionCards = feedViewModel?.arrayCollectionCards  else { return 0 }
+        return arrayCollectionCards[section].count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        guard let categoryCount = feedViewModel?.sectionsCollection else { return 1}
-        let sections = categoryCount + 1
-        print("sections----- \(sections )")
-        return sections
+        guard let arrayCollectionCards = feedViewModel?.arrayCollectionCards  else { return 0 }
+        return arrayCollectionCards.count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -40,10 +40,13 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
             
             view = reusableview
             
-            guard let types = feedViewModel?.types else { return view }
-            guard let iterator = feedViewModel?.iteratorType else { return view }
-        
-            reusableview.label.text = types[iterator]
+            guard let currentSectionType = feedViewModel?.currentSectionType else { return view }
+            
+            for sectionNumber in 0...currentSectionType.count {
+                if indexPath.section == sectionNumber {
+                    reusableview.label.text = currentSectionType[sectionNumber]
+                }
+            }
             
         }
         return view
@@ -51,7 +54,7 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(CardCollectionViewCell.self, for: indexPath)
-        cell.card = feedViewModel?.arrayCards?[indexPath.row]
+        cell.card = feedViewModel?.arrayCollectionCards[indexPath.section][indexPath.row]
         
         return cell
     }
