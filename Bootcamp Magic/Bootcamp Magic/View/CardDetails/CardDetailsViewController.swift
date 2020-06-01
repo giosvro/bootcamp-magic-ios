@@ -17,6 +17,7 @@ class CardDetailsViewController: UIViewController {
         self.cardDetailsViewModel = CardDetailsViewModel()
         cardDetailsViewModel.card = card
         cardDetailsViewModel.cardImage = cardImage
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,6 +31,11 @@ class CardDetailsViewController: UIViewController {
         view.delegate = self
         view.cardImage.image = cardDetailsViewModel.cardImage
         self.view = view
+        view.quitButton.addTarget(self, action: #selector(self.dismissScreen), for: .touchUpInside)
+    }
+    
+    @objc func dismissScreen() {
+        dismiss(animated: true, completion: nil)
     }
 }
 
