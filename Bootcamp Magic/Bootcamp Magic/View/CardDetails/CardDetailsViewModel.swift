@@ -9,6 +9,31 @@
 import UIKit
 
 class CardDetailsViewModel {
+    private var favoriteManager: FavoriteManager
     var cardImage: UIImage?
     var card: Card?
+    
+    init() {
+        self.favoriteManager = FavoriteManager()
+    }
+    
+    func favoriteButtonPressed() {
+        guard let card = self.card else { return }
+        if favoriteManager.arraySave.contains(card.id) {
+            self.unfavoriteAction()
+        } else {
+            self.favoriteAction()
+        }
+    }
+    
+    private func favoriteAction() {
+        guard let card = self.card else { return }
+        favoriteManager.favoriteAction(card: card)
+    }
+    
+    private func unfavoriteAction() {
+        guard let card = self.card else { return }
+        favoriteManager.unfavorite(card: card)
+    }
+
 }

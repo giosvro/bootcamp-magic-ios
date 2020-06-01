@@ -32,10 +32,15 @@ class CardDetailsViewController: UIViewController {
         view.cardImage.image = cardDetailsViewModel.cardImage
         self.view = view
         view.quitButton.addTarget(self, action: #selector(self.dismissScreen), for: .touchUpInside)
+        view.favoriteButton.addTarget(self, action: #selector(self.favoriteButtonPressed), for: .touchUpInside)
     }
     
     @objc func dismissScreen() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func favoriteButtonPressed() {
+        cardDetailsViewModel.favoriteButtonPressed()
     }
 }
 
