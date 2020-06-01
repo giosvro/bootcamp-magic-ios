@@ -24,6 +24,7 @@ class FeedCoordinator: Coordinator {
     public func presentCardDetails() {
         let vc = CardDetailsViewController()
         vc.coordinator = self
+        vc.modalPresentationStyle = .fullScreen
         self.rootViewController.present(vc, animated: true, completion: nil)
     }
 }
