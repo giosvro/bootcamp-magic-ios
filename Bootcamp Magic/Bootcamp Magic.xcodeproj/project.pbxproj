@@ -48,7 +48,13 @@
 		09137334247588010079003C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09137333247588010079003C /* Router.swift */; };
 		09328D312480719D00EB0804 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D302480719D00EB0804 /* CardImageView.swift */; };
 		09328D332481571700EB0804 /* CardsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D322481571700EB0804 /* CardsHeaderView.swift */; };
+		09328D39248528E000EB0804 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D38248528E000EB0804 /* Strings.swift */; };
+		09328D3B24853D9300EB0804 /* CardDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D3A24853D9300EB0804 /* CardDetailsViewModel.swift */; };
+		09328D3E248578D000EB0804 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D3D248578D000EB0804 /* CoreData.swift */; };
+		09328D45248581C400EB0804 /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09328D44248581C400EB0804 /* FavoriteManager.swift */; };
 		0942424D247D56DD0046FBD8 /* HTTPServicesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0942424C247D56DD0046FBD8 /* HTTPServicesProtocol.swift */; };
+		0978908B24868D73001B053C /* CardCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0978908924868D73001B053C /* CardCoreData+CoreDataClass.swift */; };
+		0978908C24868D73001B053C /* CardCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0978908A24868D73001B053C /* CardCoreData+CoreDataProperties.swift */; };
 		09B1B8322475CB5900662B5E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8312475CB5900662B5E /* NetworkManager.swift */; };
 		09B1B8342475CDD300662B5E /* MagicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8332475CDD300662B5E /* MagicApi.swift */; };
 		09B1B8372476FA3C00662B5E /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B1B8362476FA3C00662B5E /* CardModel.swift */; };
@@ -121,7 +127,13 @@
 		09137333247588010079003C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		09328D302480719D00EB0804 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		09328D322481571700EB0804 /* CardsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsHeaderView.swift; sourceTree = "<group>"; };
+		09328D38248528E000EB0804 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		09328D3A24853D9300EB0804 /* CardDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewModel.swift; sourceTree = "<group>"; };
+		09328D3D248578D000EB0804 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		09328D44248581C400EB0804 /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
 		0942424C247D56DD0046FBD8 /* HTTPServicesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServicesProtocol.swift; sourceTree = "<group>"; };
+		0978908924868D73001B053C /* CardCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardCoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0978908A24868D73001B053C /* CardCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardCoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		09B1B8312475CB5900662B5E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		09B1B8332475CDD300662B5E /* MagicApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicApi.swift; sourceTree = "<group>"; };
 		09B1B8362476FA3C00662B5E /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
@@ -177,6 +189,9 @@
 		07E9EB2B2475581400F9500D /* Bootcamp Magic */ = {
 			isa = PBXGroup;
 			children = (
+				09328D43248581AF00EB0804 /* Manager */,
+				09328D3C24856ED200EB0804 /* CoreData */,
+				09328D34248528AA00EB0804 /* Common */,
 				07E9EBA0247DB49A00F9500D /* Resources */,
 				07E9EB8C247C0D5900F9500D /* ColectionView */,
 				0913731D2475600F0079003C /* NetworkLayer */,
@@ -282,6 +297,7 @@
 			children = (
 				07E9EB8424780CF900F9500D /* CardDetailsViewController.swift */,
 				07E9EB8624783DA900F9500D /* CardDetailsView.swift */,
+				09328D3A24853D9300EB0804 /* CardDetailsViewModel.swift */,
 			);
 			path = CardDetails;
 			sourceTree = "<group>";
@@ -369,6 +385,32 @@
 				0913732B24756AA40079003C /* NetworkError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		09328D34248528AA00EB0804 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				09328D38248528E000EB0804 /* Strings.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		09328D3C24856ED200EB0804 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				09328D3D248578D000EB0804 /* CoreData.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		09328D43248581AF00EB0804 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0978908924868D73001B053C /* CardCoreData+CoreDataClass.swift */,
+				0978908A24868D73001B053C /* CardCoreData+CoreDataProperties.swift */,
+				09328D44248581C400EB0804 /* FavoriteManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		09B1B8352476EED700662B5E /* Model */ = {
@@ -523,6 +565,8 @@
 				07E9EB7A247598AA00F9500D /* UIViewExtension.swift in Sources */,
 				07E9EB7C2475A99A00F9500D /* FavoritesView.swift in Sources */,
 				09328D312480719D00EB0804 /* CardImageView.swift in Sources */,
+				09328D45248581C400EB0804 /* FavoriteManager.swift in Sources */,
+				0978908C24868D73001B053C /* CardCoreData+CoreDataProperties.swift in Sources */,
 				07E9EB90247C0E0500F9500D /* UICollectionViewExtension.swift in Sources */,
 				07E9EB8724783DA900F9500D /* CardDetailsView.swift in Sources */,
 				07E9EB632475642000F9500D /* FavoritesViewController.swift in Sources */,
@@ -533,6 +577,8 @@
 				0913733224756D070079003C /* NetworkRouter.swift in Sources */,
 				09137325247562950079003C /* HTTPMethod.swift in Sources */,
 				07E9EB2D2475581400F9500D /* AppDelegate.swift in Sources */,
+				09328D3B24853D9300EB0804 /* CardDetailsViewModel.swift in Sources */,
+				0978908B24868D73001B053C /* CardCoreData+CoreDataClass.swift in Sources */,
 				09B1B8372476FA3C00662B5E /* CardModel.swift in Sources */,
 				0913732C24756AA40079003C /* NetworkError.swift in Sources */,
 				09B1B8392477052C00662B5E /* CardSetModel.swift in Sources */,
@@ -544,6 +590,7 @@
 				07E9EB99247C127500F9500D /* FeedViewModel.swift in Sources */,
 				07E9EB8B247BFEB900F9500D /* CardCollectionViewCell.swift in Sources */,
 				07E9EB6A24756C2800F9500D /* AppCoordinator.swift in Sources */,
+				09328D39248528E000EB0804 /* Strings.swift in Sources */,
 				07E9EB2F2475581400F9500D /* SceneDelegate.swift in Sources */,
 				07E9EB652475643F00F9500D /* FeedViewController.swift in Sources */,
 				07E9EB8E247C0DB500F9500D /* FeedCollectionViewDataSource.swift in Sources */,
@@ -554,6 +601,7 @@
 				07E9EB6824756BB800F9500D /* Coordinator.swift in Sources */,
 				09137334247588010079003C /* Router.swift in Sources */,
 				09328D332481571700EB0804 /* CardsHeaderView.swift in Sources */,
+				09328D3E248578D000EB0804 /* CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

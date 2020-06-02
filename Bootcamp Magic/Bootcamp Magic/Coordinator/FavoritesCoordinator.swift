@@ -21,10 +21,9 @@ class FavoritesCoordinator: Coordinator {
         
     }
     
-    public func presentCardDetails() {
-        let vc = CardDetailsViewController()
+    public func presentCardDetails(card: Card, cardImage: UIImage) {
+        let vc = CardDetailsViewController(card: card, cardImage: cardImage)
         vc.coordinator = self
         self.rootViewController.present(vc, animated: true, completion: nil)
     }
-    
 }
