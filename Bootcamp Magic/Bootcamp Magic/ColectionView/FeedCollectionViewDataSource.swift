@@ -12,6 +12,8 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     var feedViewModel: FeedViewModel?
     var sections: Int?
+    var loadingView: CollectionFooterView?
+    var isLoading = false
     
     init(viewModel: FeedViewModel) {
         self.feedViewModel = viewModel
@@ -48,7 +50,16 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
                 }
             }
             
+        } else if kind == UICollectionView.elementKindSectionFooter {
+            guard let reusableview = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind, withReuseIdentifier: "\(CollectionFooterView.self)",
+                for: indexPath) as? CollectionFooterView else {
+                return UICollectionReusableView()
+            }
+            loadingView = reusableview
+            view = reusableview
         }
+        
         return view
     }
     
@@ -58,4 +69,17 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            self.loadingView?.activityView.activityStartAnimating()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            self.loadingView?.activityView.activityStopAnimating()
+        }
+    }
+    
 }

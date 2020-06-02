@@ -12,6 +12,7 @@ class FeedViewModel {
     var delegate: ViewDelegate?
     var arrayCards: [Card]?
     var arrayCollectionCards: [[Card]] = []
+    var arrayCardsAux: [[Card]] = []
     var types: [String]?
     var sets: [CardSet]?
     var networkManager = NetworkManager()
@@ -21,7 +22,9 @@ class FeedViewModel {
     var iteratorSet = 0
     var requestStatusFlag = false // in request or not
     var interatorTypeChanged = true
+    var searchFlag = false
     var currentSectionType: [String] = []
+    var currentSectionAux: [String] = []
     
     public func loadCards(){
         self.arrayCards = []
@@ -133,13 +136,15 @@ class FeedViewModel {
     }
     
     private func requestCardWithName(_ name: String) {
-        
         networkManager.makeRequest(endpoint: .cardsWithName(name)) { [weak self] (result: Result<CardApiResponse, NetworkResponse>) in
             guard let self = self else { return }
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    self.arrayCards = response.cards
+                    self.arrayCardsAux = self.arrayCollectionCards
+                    self.currentSectionAux = self.currentSectionType
+                    self.arrayCollectionCards = [response.cards]
+                    self.currentSectionType = [name]
                     self.reloadCollection()
                 }
             case .failure(let error):
@@ -149,7 +154,7 @@ class FeedViewModel {
     }
     
     func loadMoreCards(){
-        if !requestStatusFlag {
+        if !requestStatusFlag, !searchFlag {
             requestCards()
         }
     }
@@ -161,8 +166,16 @@ class FeedViewModel {
     }
     
     func searchCardsWith(name: String) {
+        searchFlag = true
         prepareToReloadCollection()
         requestCardWithName(name)
+    }
+    
+    func loadBackList(){
+        arrayCollectionCards = arrayCardsAux
+        currentSectionType = currentSectionAux
+        searchFlag = false
+        reloadCollection()
     }
     
     func prepareToReloadCollection() {
