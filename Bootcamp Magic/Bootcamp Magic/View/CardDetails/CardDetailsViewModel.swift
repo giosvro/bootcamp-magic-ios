@@ -24,6 +24,11 @@ class CardDetailsViewModel {
         } else {
             self.favoriteAction()
         }
+        
+        CoreData().getElementCoreData()?.forEach({ (card) in
+            print(";;;;; - ", card.name)
+        })
+        print("-------------")
     }
     
     private func favoriteAction() {
@@ -34,6 +39,18 @@ class CardDetailsViewModel {
     private func unfavoriteAction() {
         guard let card = self.card else { return }
         favoriteManager.unfavorite(card: card)
+    }
+    
+    func checkCardFavoriteStatus() -> Bool {
+        let favoriteCards = favoriteManager.coreData.getElementCoreData()
+        var result: Bool = false
+        favoriteCards?.forEach({ [weak self] (card) in
+            guard let self = self else { return }
+            if self.card?.id == card.id {
+                result = true
+            }
+        })
+        return result
     }
 
 }

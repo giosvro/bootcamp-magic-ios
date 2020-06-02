@@ -33,7 +33,6 @@ class CardDetailsView: UIView {
         button.backgroundColor = .clear
         button.layer.borderWidth = 2
         button.layer.borderColor = CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 1)
-        button.setTitle(Strings.FavoriteButtonStates.favoriteText, for: .normal)
         button.titleLabel?.font = UIFont(name: "Gotham-Black", size: 20.0)
         return button
     }()

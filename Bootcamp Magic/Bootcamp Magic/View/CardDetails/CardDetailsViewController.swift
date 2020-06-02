@@ -33,6 +33,7 @@ class CardDetailsViewController: UIViewController {
         self.view = view
         view.quitButton.addTarget(self, action: #selector(self.dismissScreen), for: .touchUpInside)
         view.favoriteButton.addTarget(self, action: #selector(self.favoriteButtonPressed), for: .touchUpInside)
+        setupButtonTitle()
     }
     
     @objc func dismissScreen() {
@@ -41,6 +42,16 @@ class CardDetailsViewController: UIViewController {
     
     @objc func favoriteButtonPressed() {
         cardDetailsViewModel.favoriteButtonPressed()
+        setupButtonTitle()
+    }
+    
+    func setupButtonTitle() {
+        guard let cardDetailView = view as? CardDetailsView else { return }
+        if cardDetailsViewModel.checkCardFavoriteStatus() == false {
+            cardDetailView.favoriteButton.setTitle(Strings.FavoriteButtonStates.favoriteText, for: .normal)
+        } else {
+            cardDetailView.favoriteButton.setTitle(Strings.FavoriteButtonStates.removeFavoriteText, for: .normal)
+        }
     }
 }
 

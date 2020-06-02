@@ -17,13 +17,13 @@ class CoreData {
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "CardCoreData", in: managedContext)!
         
-        let  cardCoreData = NSManagedObject(entity: entity, insertInto: managedContext) as? CardCoreData
+        let cardCoreData = NSManagedObject(entity: entity, insertInto: managedContext) as? CardCoreData
         cardCoreData?.id = card.id
         cardCoreData?.name = card.name
-        cardCoreData?.types = card.types as NSObject
+        cardCoreData?.types = card.types as [NSString]
         cardCoreData?.set = card.set
         cardCoreData?.imageUrl = card.imageUrl
-        
+                
         do {
             try managedContext.save()
         } catch let error as NSError {

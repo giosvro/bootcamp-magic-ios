@@ -40,7 +40,7 @@ class FavoriteManager {
     }
     
     public func unfavorite(card: CardCoreData) {
-        let id = card.id
+        guard let id = card.id else { return }
         var arraySave: [String] = []
         if arrayFavoritesIds != nil {
             arraySave = arrayFavoritesIds as! [String]

@@ -13,6 +13,6 @@ struct Strings {
     // MARK: - Network Constants
     struct FavoriteButtonStates {
         static let favoriteText = "ADD TO FAVORITES"
-        static let removeDavoriteText = "REMOVE FROM FAVORITES"
+        static let removeFavoriteText = "REMOVE FROM FAVORITES"
     }
 }
