@@ -67,6 +67,10 @@ extension FeedViewController: UICollectionViewDelegate {
             self.collectionView?.reloadData()
             self.collectionView?.isHidden = false
             self.view.activityStopAnimating()
+//            if self.isLoading {
+//                sleep(10)
+//                self.isLoading = false
+//            }
         }
     }
     
@@ -83,6 +87,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if isLoading {
+            isLoading = false
             return CGSize.zero
         } else {
             return CGSize(width: UIScreen.main.bounds.width, height: 50)
@@ -106,6 +111,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
         let percentageVerticalOffset = maximumVerticalOffset * 0.5
         if currentVerticalOffset >= percentageVerticalOffset {
             feedViewModel.loadMoreCards()
+            isLoading = true
         }
 
     }

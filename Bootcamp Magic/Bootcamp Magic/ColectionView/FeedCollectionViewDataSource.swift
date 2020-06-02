@@ -57,6 +57,7 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
                 return UICollectionReusableView()
             }
             loadingView = reusableview
+            loadingView?.activityView.activityStartAnimating()
             view = reusableview
         }
         
