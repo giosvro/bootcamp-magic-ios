@@ -15,12 +15,14 @@ class FeedView: UIView {
     var activityView: UIView
     var collectionView: UICollectionView
     var blurredBackgroundImageView: UIImageView
+    var errorLabel: UILabel
     
     weak var delegate:  ViewDelegate?
     
     override init(frame: CGRect) {
         searchBar = UISearchBar()
         label = UILabel()
+        errorLabel = UILabel()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         blurredBackgroundImageView = UIImageView()
         activityView = UIView()
@@ -36,7 +38,7 @@ class FeedView: UIView {
 
 extension FeedView: ViewCoding {
     func hierarchyView() {
-        addView(blurredBackgroundImageView, searchBar, label, collectionView, activityView)
+        addView(blurredBackgroundImageView, searchBar, label, collectionView, activityView, errorLabel)
     }
     
     func constraintView() {
@@ -69,6 +71,12 @@ extension FeedView: ViewCoding {
             ]
         )
         
+        NSLayoutConstraint.activate(
+            [errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+             errorLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            ]
+        )
+        
     }
     
     func aditionalConfigView() {
@@ -78,6 +86,11 @@ extension FeedView: ViewCoding {
         let font = UIFont(name: "Gotham-Black", size: 35.0)
         label.font = font
         label.numberOfLines = 2
+        
+        errorLabel.textColor = .white
+        let errorFont = UIFont(name: "Gotham-Black", size: 16.0)
+        errorLabel.font = errorFont
+        errorLabel.numberOfLines = 2
         
         searchBar.configureSearchBar()
         

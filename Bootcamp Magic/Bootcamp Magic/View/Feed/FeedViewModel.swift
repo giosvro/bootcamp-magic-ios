@@ -118,9 +118,16 @@ class FeedViewModel {
                 DispatchQueue.main.async {
                     self.arrayCards = response.cards
                     self.reloadCollection()
+                    
+                    if self.arrayCards?.count == 0 {
+                        self.delegate?.errorFeedback(message: Strings.SearchError.emptySearch)
+                    } else {
+                        self.delegate?.errorFeedback(message: "")
+                    }
                 }
             case .failure(let error):
                 self.feedViewErrorHandler(error: error)
+                self.delegate?.errorFeedback(message: Strings.SearchError.apiError)
             }
         }
     }
@@ -130,7 +137,6 @@ class FeedViewModel {
             requestCards()
         }
     }
-    
     
     func showCard(item: Int, cardImage: UIImage?) {
         guard let card = arrayCards?[item] else {
@@ -142,6 +148,7 @@ class FeedViewModel {
     func searchCardsWith(name: String) {
         prepareToReloadCollection()
         requestCardWithName(name)
+        delegate?.errorFeedback(message: "")
     }
     
     func prepareToReloadCollection() {

@@ -10,9 +10,14 @@ import Foundation
 
 
 struct Strings {
-    // MARK: - Network Constants
+
     struct FavoriteButtonStates {
         static let favoriteText = "ADD TO FAVORITES"
         static let removeDavoriteText = "REMOVE FROM FAVORITES"
+    }
+    
+    struct SearchError {
+        static let emptySearch = "NO CARD WITH THAT NAME :("
+        static let apiError = "WE ARE HAVING INTERNAL ISSUES x.x, PLEASE TRY AGAIN LATER "
     }
 }

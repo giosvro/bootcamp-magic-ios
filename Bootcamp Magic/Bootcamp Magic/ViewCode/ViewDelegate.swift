@@ -10,4 +10,9 @@ import UIKit
 
 protocol ViewDelegate: AnyObject {
     func didButtonPressed()
+    func errorFeedback(message: String)
+}
+
+extension ViewDelegate {
+    func errorFeedback(message: String) { }
 }

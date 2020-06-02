@@ -37,6 +37,10 @@ extension FeedViewController: ViewDelegate {
         
     }
     
+    func errorFeedback(message: String) {
+        guard let view = self.view as? FeedView else { return }
+        view.errorLabel.text = message
+    }
 }
 
 extension FeedViewController: UICollectionViewDelegate {
@@ -104,10 +108,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
         if currentVerticalOffset >= percentageVerticalOffset {
             feedViewModel.loadMoreCards()
         }
-
     }
-    
-
 }
 
 extension FeedViewController: UISearchBarDelegate {
@@ -126,5 +127,7 @@ extension FeedViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         feedViewModel.prepareToReloadCollection()
         feedViewModel.loadCards()
+        searchBar.text = ""
+        self.errorFeedback(message: "")
     }
 }
