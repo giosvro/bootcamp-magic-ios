@@ -160,9 +160,9 @@ class FeedViewModel {
     }
     
     
-    func showCard(indexPath: IndexPath) {
+    func showCard(indexPath: IndexPath, cardImage: UIImage?) {
         let card = arrayCollectionCards[indexPath.section][indexPath.row]
-        coordinatorDelegate?.selectCard(card: card)
+        coordinatorDelegate?.selectCard(card: card, cardImage: cardImage)
     }
     
     func searchCardsWith(name: String) {

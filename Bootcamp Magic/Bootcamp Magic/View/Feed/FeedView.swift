@@ -90,9 +90,7 @@ extension FeedView: ViewCoding {
         collectionView.register(CardCollectionViewCell.self)
         collectionView.isHidden = true
         
-        guard let feedViewController = delegate as? FeedViewController else {
-            return
-        }
+        guard let feedViewController = delegate as? FeedViewController else { return }
         collectionView.delegate = feedViewController
     }
     

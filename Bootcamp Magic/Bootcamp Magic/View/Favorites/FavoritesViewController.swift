@@ -10,17 +10,31 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
+    var favoritesViewModel = FavoritesViewModel()
+    var collectionView: UICollectionView?
+    var dataSource: FavoritesCollectionViewDataSource!
     var coordinator: Coordinator?
 
     override func loadView() {
         let view = FavoritesView()
         view.delegate = self
+        favoritesViewModel.delegate = self
+        self.collectionView = view.collectionView
+        self.collectionView?.delegate = self
+        self.dataSource = FavoritesCollectionViewDataSource(viewModel: favoritesViewModel)
+        self.collectionView?.dataSource = dataSource
         self.view = view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        favoritesViewModel.loadCards()
     }
+}
+
+extension FavoritesViewController: UICollectionViewDelegate {
+    
+
 }
 
 extension FavoritesViewController: ViewDelegate {
@@ -29,7 +43,6 @@ extension FavoritesViewController: ViewDelegate {
         guard let coodinator = coordinator as? FavoritesCoordinator else {
             return
         }
-//        coodinator.presentCardDetails()
     }
 
 }

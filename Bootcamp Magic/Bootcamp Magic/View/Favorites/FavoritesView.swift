@@ -10,14 +10,18 @@ import UIKit
 
 class FavoritesView: UIView {
     
-    var button : UIButton
     var searchBar: UISearchBar
+    var label: UILabel
+    var activityView: UIView
+    var collectionView: UICollectionView
     var blurredBackgroundImageView: UIImageView
     weak var delegate: ViewDelegate?
     
     override init(frame: CGRect) {
-        button = UIButton()
         searchBar = UISearchBar()
+        label = UILabel()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
+        activityView = UIView()
         blurredBackgroundImageView = UIImageView()
         super.init(frame: frame)
         blurredBackgroundImageView.frame = frame
@@ -31,36 +35,61 @@ class FavoritesView: UIView {
 
 extension FavoritesView: ViewCoding {
     func hierarchyView() {
-        addView(blurredBackgroundImageView, button, searchBar)
+        addView(blurredBackgroundImageView, searchBar, label, collectionView, activityView)
+        
     }
     
     func constraintView() {
 
         NSLayoutConstraint.activate(
-            [button.widthAnchor.constraint(equalToConstant: 80),
-             button.heightAnchor.constraint(equalToConstant: 50),
-             button.centerYAnchor.constraint(equalTo: centerYAnchor),
-             button.centerXAnchor.constraint(equalTo: centerXAnchor)
+            [searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
             ]
         )
         
         NSLayoutConstraint.activate(
-            [searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor)
+            [label.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 5),
+             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
+             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -120)
+            ]
+        )
+        
+        NSLayoutConstraint.activate(
+            [collectionView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
+             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
+             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -12),
+             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            ]
+        )
+        
+        NSLayoutConstraint.activate(
+            [activityView.centerXAnchor.constraint(equalTo: centerXAnchor),
+             activityView.centerYAnchor.constraint(equalTo: centerYAnchor)
             ]
         )
     }
     
     func aditionalConfigView() {
-        searchBar.configureSearchBar()
+        label.text = "Favorite Cards (0)"
+        label.textColor = .white
+        let font = UIFont(name: "Gotham-Black", size: 32.0)
+        label.font = font
+        label.numberOfLines = 2
         
-        button.setTitle("tela de detalhes", for: .normal)
-        button.addTarget(self, action: #selector(showCardDetails(_:)), for: .touchUpInside)
-        button.backgroundColor = .white
+        searchBar.configureSearchBar()
         
         blurredBackgroundImageView.image = UIImage(named: "background")
         blurredBackgroundImageView.blurImage()
+        
+        activityView.activityStartAnimating()
+        
+        collectionView.setupCollectionView()
+        collectionView.register(CardCollectionViewCell.self)
+        collectionView.isHidden = true
+        
+        guard let favoritesViewController = delegate as? FavoritesViewController else { return }
+        collectionView.delegate = favoritesViewController
     }
     
     @objc private func showCardDetails(_ sender: UIButton) {

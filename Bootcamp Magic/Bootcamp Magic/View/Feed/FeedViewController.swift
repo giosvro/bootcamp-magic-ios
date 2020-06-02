@@ -53,7 +53,7 @@ extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cardCell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell else { return }
-        feedViewModel.showCard(item: indexPath.item, cardImage: cardCell.cardImage.image)
+        feedViewModel.showCard(indexPath: indexPath, cardImage: cardCell.cardImage.image)
     }
     
     func prepareToReloadCollection() {
