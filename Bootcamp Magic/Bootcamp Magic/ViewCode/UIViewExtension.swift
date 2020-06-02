@@ -22,7 +22,7 @@ extension UIView {
         backgroundView.backgroundColor = backgroundColor
         backgroundView.tag = 475647
         
-        let activityView = UIActivityIndicatorView(style: .whiteLarge)
+        let activityView = UIActivityIndicatorView(style: .large)
         activityView.center = self.center
         activityView.color = .gray
         

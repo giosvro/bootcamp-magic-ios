@@ -9,11 +9,12 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-
+    
     let feedViewModel = FeedViewModel()
     var collectionView: UICollectionView?
     var dataSource: FeedCollectionViewDataSource!
-    
+    var isLoading = false
+        
     override func loadView() {
         let view = FeedView()
         feedViewModel.delegate = self
@@ -23,11 +24,20 @@ class FeedViewController: UIViewController {
         self.collectionView?.delegate = self
         self.dataSource = FeedCollectionViewDataSource(viewModel: feedViewModel)
         self.collectionView?.dataSource = dataSource
+        self.collectionView?.register(CardsHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(CardsHeaderView.self)")
+        self.collectionView?.register(CollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "\(CollectionFooterView.self)")
+        
         self.view = view
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        if let flowLayout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+//            flowLayout.sectionFootersPinToVisibleBounds = true
+//            flowLayout.sectionHeadersPinToVisibleBounds = true
+//            flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 90)
+//        }
         feedViewModel.loadCards()
     }
 }
@@ -43,7 +53,7 @@ extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cardCell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell else { return }
-        feedViewModel.showCard(item: indexPath.item, cardImage: cardCell.cardImage.image)
+        feedViewModel.showCard(indexPath: indexPath, cardImage: cardCell.cardImage.image)
     }
     
     func prepareToReloadCollection() {
@@ -65,55 +75,53 @@ extension FeedViewController: UICollectionViewDelegate {
 
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let sectionHeader = UICollectionReusableView()
-        let label: UILabel = {
-            let label: UILabel = UILabel()
-            label.textColor = .white
-            label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-            label.text = "teste"
-            label.sizeToFit()
-            return label
-        }()
-        sectionHeader.addSubview(label)
-        return sectionHeader
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 40)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: UIScreen.main.bounds.width, height: 25)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let usableWidth = collectionView.frame.width * 0.29
-
+        
         let cellWidth: CGFloat = usableWidth
         let cellHeight: CGFloat = usableWidth * 1.4
-
+        
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if isLoading {
+            isLoading = false
+            return CGSize.zero
+        } else {
+            isLoading = true
+            return CGSize(width: UIScreen.main.bounds.width, height: 44)
+        }
+    }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        isLoading = false
         let currentVerticalOffset = scrollView.contentOffset.y
         let maximumVerticalOffset = scrollView.contentSize.height - scrollView.frame.height
         let percentageVerticalOffset = maximumVerticalOffset * 0.5
         if currentVerticalOffset >= percentageVerticalOffset {
             feedViewModel.loadMoreCards()
+            isLoading = true
         }
 
     }
     
-
 }
+
 
 extension FeedViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count%3 == 0 {
+        if searchText.isEmpty {
+            feedViewModel.loadBackList()
+        } else if searchText.count%3 == 0 {
             feedViewModel.searchCardsWith(name: searchText)
         }
     }
@@ -125,6 +133,6 @@ extension FeedViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         feedViewModel.prepareToReloadCollection()
-        feedViewModel.loadCards()
+        feedViewModel.loadBackList()
     }
 }

@@ -21,9 +21,19 @@ class FavoritesCoordinator: Coordinator {
         
     }
     
-    public func presentCardDetails(card: Card, cardImage: UIImage) {
-        let vc = CardDetailsViewController(card: card, cardImage: cardImage)
-        vc.coordinator = self
-        self.rootViewController.present(vc, animated: true, completion: nil)
+    public func presentCardDetails(card: Card, cardImage: UIImage?) {
+           let vc = CardDetailsViewController(card: card, cardImage: cardImage)
+           vc.coordinator = self
+           vc.modalPresentationStyle = .fullScreen
+           self.rootViewController.present(vc, animated: true, completion: nil)
+       }
+}
+
+extension FavoritesCoordinator: CoordinatorDelegate {
+    func selectCard(card: Card, cardImage: UIImage?) {
+        presentCardDetails(card: card, cardImage: cardImage)
+
     }
+    
+    
 }

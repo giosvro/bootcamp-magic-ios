@@ -49,7 +49,7 @@ extension FeedView: ViewCoding {
         )
         
         NSLayoutConstraint.activate(
-            [label.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+            [label.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 5),
              label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
              label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22)
             ]
@@ -75,7 +75,7 @@ extension FeedView: ViewCoding {
         
         label.text = "How about these cards?"
         label.textColor = .white
-        let font = UIFont(name: "Gotham-Black", size: 35.0)
+        let font = UIFont(name: "Gotham-Black", size: 32.0)
         label.font = font
         label.numberOfLines = 2
         
@@ -90,9 +90,7 @@ extension FeedView: ViewCoding {
         collectionView.register(CardCollectionViewCell.self)
         collectionView.isHidden = true
         
-        guard let feedViewController = delegate as? FeedViewController else {
-            return
-        }
+        guard let feedViewController = delegate as? FeedViewController else { return }
         collectionView.delegate = feedViewController
     }
     

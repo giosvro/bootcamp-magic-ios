@@ -34,6 +34,12 @@ class CardCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var cardCoreData: CardCoreData?{
+        didSet {
+            configureCardCoreData()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         contentView.addView(cardImage, nameLabel)
@@ -46,6 +52,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    
     private func configureCard(){
         guard let card = card else { return }
         
@@ -61,6 +68,22 @@ class CardCollectionViewCell: UICollectionViewCell {
             nameLabel.text = card.name
             nameLabel.isHidden = false
         }
+    }
+    
+    private func configureCardCoreData(){
+        guard let card = cardCoreData else { return }
+        cardImage.backgroundColor = .red
+        nameLabel.isHidden = true
+        
+        guard let data = card.image else {
+            cardImage.image = UIImage(named: "place-holder")
+            nameLabel.text = card.name
+            nameLabel.isHidden = false
+            return
+            
+        }
+        cardImage.image = UIImage(data: data)
+        
     }
     
     private func constraintView() {

@@ -51,4 +51,12 @@ extension Card: Decodable {
         set = try cardContainer.decode(String.self, forKey: .set)
         imageUrl = try? cardContainer.decode(String.self, forKey: .imageUrl)
     }
+    
+    init(card: CardCoreData) {
+        id = card.id!
+        name = card.name!
+        types = []
+        set = card.set!
+        imageUrl = card.imageUrl
+    }
 }

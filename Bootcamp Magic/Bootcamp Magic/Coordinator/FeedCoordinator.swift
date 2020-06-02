@@ -21,7 +21,7 @@ class FeedCoordinator: Coordinator {
         
     }
     
-    public func presentCardDetails(card: Card, cardImage: UIImage?) {
+     public func presentCardDetails(card: Card, cardImage: UIImage?) {
         let vc = CardDetailsViewController(card: card, cardImage: cardImage)
         vc.coordinator = self
         vc.modalPresentationStyle = .fullScreen
@@ -31,6 +31,7 @@ class FeedCoordinator: Coordinator {
 
 extension FeedCoordinator: CoordinatorDelegate {
     func selectCard(card: Card, cardImage: UIImage?) {
+        print(card)
 //        Implementar o envio do card
         presentCardDetails(card: card, cardImage: cardImage)
     }

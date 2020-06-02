@@ -52,7 +52,7 @@ class AppCoordinator: Coordinator {
 
             let FavoritesItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite"), selectedImage: nil)
             favoriteViewController.tabBarItem = FavoritesItem
-            favoriteViewController.coordinator = favoritesCoordinator
+            favoriteViewController.favoritesViewModel.coordinatorDelegate = favoritesCoordinator
             controllers.append(favoriteViewController)
         }
         
