@@ -18,8 +18,8 @@ class CardDetailsViewModel {
     }
     
     func favoriteButtonPressed() {
-        guard let card = self.card else { return }
-        if favoriteManager.arraySave.contains(card.id) {
+
+        if checkCardFavoriteStatus() == true {
             self.unfavoriteAction()
         } else {
             self.favoriteAction()
@@ -53,5 +53,4 @@ class CardDetailsViewModel {
         })
         return result
     }
-
 }
