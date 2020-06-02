@@ -42,7 +42,8 @@ extension FeedViewController: ViewDelegate {
 extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        feedViewModel.showCard(item: indexPath.item)
+        guard let cardCell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell else { return }
+        feedViewModel.showCard(item: indexPath.item, cardImage: cardCell.cardImage.image)
     }
     
     func prepareToReloadCollection() {
@@ -94,6 +95,19 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 
         return CGSize(width: cellWidth, height: cellHeight)
     }
+    
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let currentVerticalOffset = scrollView.contentOffset.y
+        let maximumVerticalOffset = scrollView.contentSize.height - scrollView.frame.height
+        let percentageVerticalOffset = maximumVerticalOffset * 0.5
+        if currentVerticalOffset >= percentageVerticalOffset {
+            feedViewModel.loadMoreCards()
+        }
+
+    }
+    
+
 }
 
 extension FeedViewController: UISearchBarDelegate {
