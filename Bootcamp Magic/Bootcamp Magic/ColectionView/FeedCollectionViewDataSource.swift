@@ -57,7 +57,7 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
                 return UICollectionReusableView()
             }
             loadingView = reusableview
-            loadingView?.activityView.activityStartAnimating()
+            reusableview.activityView.startAnimating()
             view = reusableview
         }
         
@@ -70,17 +70,5 @@ class FeedCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionView.elementKindSectionFooter {
-            self.loadingView?.activityView.activityStartAnimating()
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionView.elementKindSectionFooter {
-            self.loadingView?.activityView.activityStopAnimating()
-        }
-    }
-    
+   
 }

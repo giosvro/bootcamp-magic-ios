@@ -9,17 +9,21 @@
 import UIKit
 
 class CollectionFooterView: UICollectionReusableView {
-    var activityView = UIView()
+    var activityView: UIActivityIndicatorView = {
+        let activityView = UIActivityIndicatorView(style: .large)
+        activityView.color = .gray
+        activityView.isHidden = false
+        return activityView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        activityView.backgroundColor = .red
-        activityView.activityStartAnimating()
+        activityView.center = self.center
         addSubview(activityView)
         
         activityView.translatesAutoresizingMaskIntoConstraints = false
         activityView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        activityView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        activityView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -5).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

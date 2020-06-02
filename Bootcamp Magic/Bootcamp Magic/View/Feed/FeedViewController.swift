@@ -67,10 +67,6 @@ extension FeedViewController: UICollectionViewDelegate {
             self.collectionView?.reloadData()
             self.collectionView?.isHidden = false
             self.view.activityStopAnimating()
-//            if self.isLoading {
-//                sleep(10)
-//                self.isLoading = false
-//            }
         }
     }
     
@@ -85,15 +81,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: UIScreen.main.bounds.width, height: 25)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if isLoading {
-            isLoading = false
-            return CGSize.zero
-        } else {
-            return CGSize(width: UIScreen.main.bounds.width, height: 50)
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let usableWidth = collectionView.frame.width * 0.29
         
@@ -103,6 +90,15 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if isLoading {
+            isLoading = false
+            return CGSize.zero
+        } else {
+            isLoading = true
+            return CGSize(width: UIScreen.main.bounds.width, height: 44)
+        }
+    }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         isLoading = false
