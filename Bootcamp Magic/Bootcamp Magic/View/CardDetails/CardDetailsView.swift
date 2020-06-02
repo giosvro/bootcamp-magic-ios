@@ -23,7 +23,7 @@ class CardDetailsView: UIView {
     var cardImage: CardImageView = {
         let imageView = CardImageView()
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 14
+        imageView.layer.cornerRadius = 20
         return imageView
     }()
     
@@ -108,7 +108,9 @@ extension CardDetailsView: ViewCoding {
         
         NSLayoutConstraint.activate(
             [label.centerXAnchor.constraint(equalTo: cardImage.centerXAnchor),
-             label.centerYAnchor.constraint(equalTo: cardImage.centerYAnchor, constant: 55)
+             label.centerYAnchor.constraint(equalTo: cardImage.centerYAnchor, constant: 70),
+             label.leadingAnchor.constraint(equalTo: cardImage.leadingAnchor, constant:  20),
+             label.trailingAnchor.constraint(equalTo: cardImage.trailingAnchor, constant: -20),
             ]
         )
         
