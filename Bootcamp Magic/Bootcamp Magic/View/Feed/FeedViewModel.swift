@@ -146,9 +146,16 @@ class FeedViewModel {
                     self.arrayCollectionCards = [response.cards]
                     self.currentSectionType = [name]
                     self.reloadCollection()
+                    
+                    if self.arrayCards?.count == 0 {
+                        self.delegate?.errorFeedback(message: Strings.SearchError.emptySearch)
+                    } else {
+                        self.delegate?.errorFeedback(message: "")
+                    }
                 }
             case .failure(let error):
                 self.feedViewErrorHandler(error: error)
+                self.delegate?.errorFeedback(message: Strings.SearchError.apiError)
             }
         }
     }
@@ -169,6 +176,7 @@ class FeedViewModel {
         searchFlag = true
         prepareToReloadCollection()
         requestCardWithName(name)
+        delegate?.errorFeedback(message: "")
     }
     
     func loadBackList(){

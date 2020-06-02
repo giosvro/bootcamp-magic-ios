@@ -47,6 +47,10 @@ extension FeedViewController: ViewDelegate {
         
     }
     
+    func errorFeedback(message: String) {
+        guard let view = self.view as? FeedView else { return }
+        view.errorLabel.text = message
+    }
 }
 
 extension FeedViewController: UICollectionViewDelegate {
@@ -110,7 +114,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
             feedViewModel.loadMoreCards()
             isLoading = true
         }
-
     }
     
 }
@@ -134,5 +137,7 @@ extension FeedViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         feedViewModel.prepareToReloadCollection()
         feedViewModel.loadBackList()
+        searchBar.text = ""
+        self.errorFeedback(message: "")
     }
 }
