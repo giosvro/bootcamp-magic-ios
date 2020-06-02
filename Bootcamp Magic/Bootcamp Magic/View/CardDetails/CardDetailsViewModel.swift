@@ -26,14 +26,15 @@ class CardDetailsViewModel {
         }
         
         CoreData().getElementCoreData()?.forEach({ (card) in
-            print(";;;;; - ", card.name)
+            print(";;;;; - ", card.name, card.image)
         })
         print("-------------")
     }
     
     private func favoriteAction() {
         guard let card = self.card else { return }
-        favoriteManager.favoriteAction(card: card)
+        guard let cardImage = self.cardImage else { return }
+        favoriteManager.favoriteAction(card: card, imageData: cardImage.pngData())
     }
     
     private func unfavoriteAction() {

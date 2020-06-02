@@ -29,12 +29,12 @@ class FavoriteManager {
         defaults.set(arraySave, forKey: "favoritesIds")
     }
     
-    public func favoriteAction(card: Card) {
+    public func favoriteAction(card: Card, imageData: Data?) {
         let id = card.id
         if arrayFavoritesIds != nil {
             arraySave = arrayFavoritesIds as! [String]
         }
-        coreData.saveCoreData(card: card)
+        coreData.saveCoreData(card: card, imageData: imageData)
         arraySave.append(id)
         defaults.set(arraySave, forKey: "favoritesIds")
     }

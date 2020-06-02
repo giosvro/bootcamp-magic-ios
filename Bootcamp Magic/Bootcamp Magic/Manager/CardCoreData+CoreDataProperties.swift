@@ -22,5 +22,7 @@ extension CardCoreData {
     @NSManaged public var name: String?
     @NSManaged public var set: String?
     @NSManaged public var types: [NSString]?
+    @NSManaged public var image: Data?
+
 
 }

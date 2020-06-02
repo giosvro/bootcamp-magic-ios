@@ -13,7 +13,7 @@ class CoreData {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    func saveCoreData(card: Card) {
+    func saveCoreData(card: Card, imageData: Data?) {
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "CardCoreData", in: managedContext)!
         
@@ -23,6 +23,7 @@ class CoreData {
         cardCoreData?.types = card.types as [NSString]
         cardCoreData?.set = card.set
         cardCoreData?.imageUrl = card.imageUrl
+        cardCoreData?.image = imageData
                 
         do {
             try managedContext.save()
