@@ -45,6 +45,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         contentView.addView(cardImage, nameLabel)
         self.isUserInteractionEnabled = true
         self.backgroundColor = .clear
+        cardImage.image = UIImage(named: "place-holder")
         constraintView()
     }
     
