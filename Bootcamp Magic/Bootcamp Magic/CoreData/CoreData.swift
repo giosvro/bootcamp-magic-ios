@@ -23,7 +23,9 @@ class CoreData {
         cardCoreData?.types = card.types as [NSString]
         cardCoreData?.set = card.set
         cardCoreData?.imageUrl = card.imageUrl
-        cardCoreData?.image = imageData
+        if card.imageUrl != nil {
+            cardCoreData?.image = imageData
+        }
                 
         do {
             try managedContext.save()

@@ -11,6 +11,14 @@ import UIKit
 class CardDetailsView: UIView {
     
     var blurredBackgroundImageView: UIImageView
+    var label: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        return label
+    }()
     
     var cardImage: CardImageView = {
         let imageView = CardImageView()
@@ -61,7 +69,7 @@ class CardDetailsView: UIView {
 
 extension CardDetailsView: ViewCoding {
     func hierarchyView() {
-        addView(blurredBackgroundImageView, cardImage, quitButton, favoriteButton)
+        addView(blurredBackgroundImageView, cardImage, label, quitButton, favoriteButton)
     }
     
     func constraintView() {
@@ -95,6 +103,12 @@ extension CardDetailsView: ViewCoding {
              favoriteButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 27),
              favoriteButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -27),
              favoriteButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -60),
+            ]
+        )
+        
+        NSLayoutConstraint.activate(
+            [label.centerXAnchor.constraint(equalTo: cardImage.centerXAnchor),
+             label.centerYAnchor.constraint(equalTo: cardImage.centerYAnchor, constant: 55)
             ]
         )
         

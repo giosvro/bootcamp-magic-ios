@@ -37,7 +37,7 @@ class FavoritesCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(CardCollectionViewCell.self, for: indexPath)
-        cell.card = favoritesViewModel?.arrayCards[indexPath.row]
+        cell.cardCoreData = favoritesViewModel?.arrayCards[indexPath.row]
         
         return cell
     }

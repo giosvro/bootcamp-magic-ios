@@ -23,6 +23,7 @@ class FavoritesView: UIView {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         activityView = UIView()
         blurredBackgroundImageView = UIImageView()
+        searchBar.isHidden = true
         super.init(frame: frame)
         blurredBackgroundImageView.frame = frame
         setup()

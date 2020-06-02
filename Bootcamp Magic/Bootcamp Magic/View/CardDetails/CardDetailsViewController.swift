@@ -12,6 +12,7 @@ class CardDetailsViewController: UIViewController {
     
     let cardDetailsViewModel: CardDetailsViewModel
     var coordinator: Coordinator?
+    var cardName = UILabel()
     
     init(card: Card, cardImage: UIImage?) {
         self.cardDetailsViewModel = CardDetailsViewModel()
@@ -30,10 +31,12 @@ class CardDetailsViewController: UIViewController {
         let view = CardDetailsView()
         view.delegate = self
         view.cardImage.image = cardDetailsViewModel.cardImage
+        cardName = view.label
         self.view = view
         view.quitButton.addTarget(self, action: #selector(self.dismissScreen), for: .touchUpInside)
         view.favoriteButton.addTarget(self, action: #selector(self.favoriteButtonPressed), for: .touchUpInside)
         setupButtonTitle()
+        setupCardName()
     }
     
     @objc func dismissScreen() {
@@ -45,13 +48,23 @@ class CardDetailsViewController: UIViewController {
         setupButtonTitle()
     }
     
-    func setupButtonTitle() {
+    private func setupButtonTitle() {
         guard let cardDetailView = view as? CardDetailsView else { return }
         if cardDetailsViewModel.checkCardFavoriteStatus() == false {
             cardDetailView.favoriteButton.setTitle(Strings.FavoriteButtonStates.favoriteText, for: .normal)
         } else {
             cardDetailView.favoriteButton.setTitle(Strings.FavoriteButtonStates.removeFavoriteText, for: .normal)
         }
+    }
+    
+    private func setupCardName(){
+        guard let name = cardDetailsViewModel.card?.name else { return }
+        guard let _ = cardDetailsViewModel.card?.imageUrl else {
+            cardName.text = name
+            cardName.isHidden = false
+            return
+        }
+        cardName.isHidden = true
     }
 }
 

@@ -6,22 +6,29 @@
 //  Copyright © 2020 mariaelena.silveira. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class FavoritesViewModel {
     var delegate: ViewDelegate?
-    var arrayCards: [Card] = []
-    var arrayCollectionCards: [[Card]] = []
-    var types: [String]?
-    var sets: [CardSet]?
-    var networkManager = NetworkManager()
+    var arrayCards: [CardCoreData] = []
     var coordinatorDelegate: CoordinatorDelegate?
-    var searchFlag = false
-    var currentSectionType: [String] = []
+    let coreData = CoreData()
     
     public func loadCards(){
-        CoreData().getElementCoreData()?.forEach({ (card) in
-            print(";;;;; - ", card.name, card.image)
-        })
+        guard let arrayCards = coreData.getElementCoreData() else { return }
+        self.arrayCards = arrayCards
+        reloadCollection()
     }
+    
+    private func reloadCollection(){
+        guard let delegate = delegate as? FavoritesViewController else { return }
+        delegate.reloadCollection()
+    }
+    
+    func showCard(indexPath: IndexPath, cardImage: UIImage?) {
+        let cardCoreData = arrayCards[indexPath.item]
+        let card = Card(card: cardCoreData)
+        coordinatorDelegate?.selectCard(card: card, cardImage: cardImage)
+    }
+    
 }
