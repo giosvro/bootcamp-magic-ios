@@ -147,7 +147,7 @@ class FeedViewModel {
                     self.currentSectionType = [name]
                     self.reloadCollection()
                     
-                    if self.arrayCards?.count == 0 {
+                    if response.cards.count == 0 {
                         self.delegate?.errorFeedback(message: Strings.SearchError.emptySearch)
                     } else {
                         self.delegate?.errorFeedback(message: "")
