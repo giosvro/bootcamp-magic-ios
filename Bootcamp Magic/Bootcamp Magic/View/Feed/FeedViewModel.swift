@@ -183,6 +183,7 @@ class FeedViewModel {
         arrayCollectionCards = arrayCardsAux
         currentSectionType = currentSectionAux
         searchFlag = false
+        delegate?.errorFeedback(message: "")
         reloadCollection()
     }
     
