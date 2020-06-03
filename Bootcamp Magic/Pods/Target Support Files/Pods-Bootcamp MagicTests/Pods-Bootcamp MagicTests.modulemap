@@ -1,0 +1,6 @@
+framework module Pods_Bootcamp_MagicTests {
+  umbrella header "Pods-Bootcamp MagicTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
