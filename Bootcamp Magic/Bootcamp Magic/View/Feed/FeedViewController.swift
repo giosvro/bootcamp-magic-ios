@@ -10,11 +10,20 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    let feedViewModel = FeedViewModel()
+    let feedViewModel: FeedViewModel
     var collectionView: UICollectionView?
-    var dataSource: FeedCollectionViewDataSource!
+    lazy var dataSource = FeedCollectionViewDataSource(viewModel: feedViewModel)
     var isLoading = false
-        
+    
+    init(feedViewModel: FeedViewModel){
+        self.feedViewModel = feedViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         let view = FeedView()
         feedViewModel.delegate = self
@@ -22,7 +31,6 @@ class FeedViewController: UIViewController {
         view.searchBar.delegate = self
         self.collectionView = view.collectionView
         self.collectionView?.delegate = self
-        self.dataSource = FeedCollectionViewDataSource(viewModel: feedViewModel)
         self.collectionView?.dataSource = dataSource
         self.collectionView?.register(CardsHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(CardsHeaderView.self)")
         self.collectionView?.register(CollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "\(CollectionFooterView.self)")
@@ -33,11 +41,6 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if let flowLayout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-//            flowLayout.sectionFootersPinToVisibleBounds = true
-//            flowLayout.sectionHeadersPinToVisibleBounds = true
-//            flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 90)
-//        }
         feedViewModel.loadCards()
     }
 }

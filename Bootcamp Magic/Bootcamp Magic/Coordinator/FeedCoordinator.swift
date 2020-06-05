@@ -14,7 +14,7 @@ class FeedCoordinator: Coordinator {
     var rootViewController: UIViewController
     
     init() {
-        self.rootViewController = FeedViewController()
+        self.rootViewController = FeedViewController(feedViewModel: FeedViewModel())
     }
     
     func start() {
@@ -31,8 +31,6 @@ class FeedCoordinator: Coordinator {
 
 extension FeedCoordinator: CoordinatorDelegate {
     func selectCard(card: Card, cardImage: UIImage?) {
-        print(card)
-//        Implementar o envio do card
         presentCardDetails(card: card, cardImage: cardImage)
     }
     
