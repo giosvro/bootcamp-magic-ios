@@ -103,13 +103,11 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
             isLoading = false
             return CGSize.zero
         } else {
-            isLoading = true
             return CGSize(width: UIScreen.main.bounds.width, height: 44)
         }
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        isLoading = false
         let currentVerticalOffset = scrollView.contentOffset.y
         let maximumVerticalOffset = scrollView.contentSize.height - scrollView.frame.height
         let percentageVerticalOffset = maximumVerticalOffset * 0.5
