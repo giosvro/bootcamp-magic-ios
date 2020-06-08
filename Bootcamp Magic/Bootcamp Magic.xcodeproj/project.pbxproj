@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		079C2DDD248EB4A1008497B8 /* FeedViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079C2DDC248EB4A1008497B8 /* FeedViewControllerTest.swift */; };
 		07BD6536248161970098DA99 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BD6535248161970098DA99 /* UISearchBarExtension.swift */; };
 		07BD65382485B0090098DA99 /* CollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BD65372485B0090098DA99 /* CollectionFooterView.swift */; };
 		07BD65422486C8780098DA99 /* FavoritesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BD65412486C8780098DA99 /* FavoritesCollectionViewDataSource.swift */; };
@@ -85,6 +86,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		079C2DDC248EB4A1008497B8 /* FeedViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTest.swift; sourceTree = "<group>"; };
 		07BD6535248161970098DA99 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
 		07BD65372485B0090098DA99 /* CollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFooterView.swift; sourceTree = "<group>"; };
 		07BD65412486C8780098DA99 /* FavoritesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			children = (
 				07E9EB462475581600F9500D /* Bootcamp_MagicTests.swift */,
 				07E9EB482475581600F9500D /* Info.plist */,
+				079C2DDC248EB4A1008497B8 /* FeedViewControllerTest.swift */,
 			);
 			path = "Bootcamp MagicTests";
 			sourceTree = "<group>";
@@ -456,7 +459,6 @@
 				DB6379E676437C71F4480EDA /* Pods-Bootcamp MagicTests.debug.xcconfig */,
 				2DA470E940FC5EB98973E2AE /* Pods-Bootcamp MagicTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -748,6 +750,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079C2DDD248EB4A1008497B8 /* FeedViewControllerTest.swift in Sources */,
 				07E9EB472475581600F9500D /* Bootcamp_MagicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

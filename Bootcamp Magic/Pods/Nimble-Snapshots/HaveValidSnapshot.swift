@@ -22,12 +22,10 @@ extension UIView: Snapshotable {
     }
 }
 
-@objc
-public class FBSnapshotTest: NSObject {
+@objc public class FBSnapshotTest: NSObject {
 
     var referenceImagesDirectory: String?
     var tolerance: CGFloat = 0
-    var pixelTolerance: CGFloat = 0
 
     static let sharedInstance = FBSnapshotTest()
 
@@ -36,25 +34,15 @@ public class FBSnapshotTest: NSObject {
     }
 
     // swiftlint:disable:next function_parameter_count
-    class func compareSnapshot(_ instance: Snapshotable,
-                               isDeviceAgnostic: Bool = false,
-                               usesDrawRect: Bool = false,
-                               snapshot: String,
-                               record: Bool,
-                               referenceDirectory: String,
-                               tolerance: CGFloat,
-                               perPixelTolerance: CGFloat,
-                               filename: String,
-                               identifier: String? = nil) -> Bool {
+    class func compareSnapshot(_ instance: Snapshotable, isDeviceAgnostic: Bool = false,
+                               usesDrawRect: Bool = false, snapshot: String, record: Bool,
+                               referenceDirectory: String, tolerance: CGFloat,
+                               filename: String, identifier: String? = nil) -> Bool {
 
         let testName = parseFilename(filename: filename)
         let snapshotController: FBSnapshotTestController = FBSnapshotTestController(test: self)
         snapshotController.folderName = testName
-        if isDeviceAgnostic {
-            snapshotController.fileNameOptions = [.device, .OS, .screenSize, .screenScale]
-        } else {
-            snapshotController.fileNameOptions = .screenScale
-        }
+        snapshotController.isDeviceAgnostic = isDeviceAgnostic
         snapshotController.recordMode = record
         snapshotController.referenceImagesDirectory = referenceDirectory
         snapshotController.imageDiffDirectory = defaultImageDiffDirectory
@@ -72,7 +60,6 @@ public class FBSnapshotTest: NSObject {
             try snapshotController.compareSnapshot(ofViewOrLayer: snapshotObject,
                                                    selector: Selector(snapshot),
                                                    identifier: identifier,
-                                                   perPixelTolerance: perPixelTolerance,
                                                    overallTolerance: tolerance)
 
             let image = try snapshotController.referenceImage(for: Selector(snapshot), identifier: identifier)
@@ -94,11 +81,11 @@ public class FBSnapshotTest: NSObject {
     }
 
     private static func attach(image: UIImage, named name: String) {
-        XCTContext.runActivity(named: name) { activity in
+        XCTContext.runActivity(named: name, block: { activity in
             let attachment = XCTAttachment(image: image)
             attachment.name = name
             activity.add(attachment)
-        }
+        })
     }
 }
 
@@ -111,14 +98,6 @@ public func setNimbleTestFolder(_ testFolder: String) {
 
 public func setNimbleTolerance(_ tolerance: CGFloat) {
     FBSnapshotTest.sharedInstance.tolerance = tolerance
-}
-
-public func setNimblePixelTolerance(_ pixelTolerance: CGFloat) {
-    FBSnapshotTest.sharedInstance.pixelTolerance = pixelTolerance
-}
-
-public func recordAllSnapshots() {
-    switchChecksWithRecords = true
 }
 
 func getDefaultReferenceDirectory(_ sourceFileName: String) -> String {
@@ -185,10 +164,6 @@ func sanitizedTestName(_ name: String?) -> String {
     return components.joined(separator: "_")
 }
 
-func getPixelTolerance() -> CGFloat {
-    return FBSnapshotTest.sharedInstance.pixelTolerance
-}
-
 func getTolerance() -> CGFloat {
     return FBSnapshotTest.sharedInstance.tolerance
 }
@@ -206,7 +181,6 @@ private func performSnapshotTest(_ name: String?,
                                  usesDrawRect: Bool = false,
                                  actualExpression: Expression<Snapshotable>,
                                  failureMessage: FailureMessage,
-                                 pixelTolerance: CGFloat? = nil,
                                  tolerance: CGFloat?) -> Bool {
     // swiftlint:disable:next force_try force_unwrapping
     let instance = try! actualExpression.evaluate()!
@@ -214,12 +188,10 @@ private func performSnapshotTest(_ name: String?,
     let referenceImageDirectory = getDefaultReferenceDirectory(testFileLocation)
     let snapshotName = sanitizedTestName(name)
     let tolerance = tolerance ?? getTolerance()
-    let pixelTolerance = pixelTolerance ?? getPixelTolerance()
 
     let result = FBSnapshotTest.compareSnapshot(instance, isDeviceAgnostic: isDeviceAgnostic,
                                                 usesDrawRect: usesDrawRect, snapshot: snapshotName, record: false,
                                                 referenceDirectory: referenceImageDirectory, tolerance: tolerance,
-                                                perPixelTolerance: pixelTolerance,
                                                 filename: actualExpression.location.file, identifier: identifier)
 
     if !result {
@@ -242,7 +214,6 @@ private func recordSnapshot(_ name: String?,
     let referenceImageDirectory = getDefaultReferenceDirectory(testFileLocation)
     let snapshotName = sanitizedTestName(name)
     let tolerance = getTolerance()
-    let pixelTolerance = getPixelTolerance()
 
     clearFailureMessage(failureMessage)
 
@@ -253,7 +224,6 @@ private func recordSnapshot(_ name: String?,
                                       record: true,
                                       referenceDirectory: referenceImageDirectory,
                                       tolerance: tolerance,
-                                      perPixelTolerance: pixelTolerance,
                                       filename: actualExpression.location.file,
                                       identifier: identifier) {
         let name = name ?? snapshotName
@@ -277,10 +247,7 @@ private func currentTestName() -> String? {
 
 internal var switchChecksWithRecords = false
 
-public func haveValidSnapshot(named name: String? = nil,
-                              identifier: String? = nil,
-                              usesDrawRect: Bool = false,
-                              pixelTolerance: CGFloat? = nil,
+public func haveValidSnapshot(named name: String? = nil, identifier: String? = nil, usesDrawRect: Bool = false,
                               tolerance: CGFloat? = nil) -> Predicate<Snapshotable> {
 
     return Predicate.fromDeprecatedClosure { actualExpression, failureMessage in
@@ -297,7 +264,6 @@ public func haveValidSnapshot(named name: String? = nil,
                                    usesDrawRect: usesDrawRect,
                                    actualExpression: actualExpression,
                                    failureMessage: failureMessage,
-                                   pixelTolerance: pixelTolerance,
                                    tolerance: tolerance)
     }
 }
@@ -305,7 +271,6 @@ public func haveValidSnapshot(named name: String? = nil,
 public func haveValidDeviceAgnosticSnapshot(named name: String? = nil,
                                             identifier: String? = nil,
                                             usesDrawRect: Bool = false,
-                                            pixelTolerance: CGFloat? = nil,
                                             tolerance: CGFloat? = nil) -> Predicate<Snapshotable> {
 
     return Predicate.fromDeprecatedClosure { actualExpression, failureMessage in
@@ -315,8 +280,8 @@ public func haveValidDeviceAgnosticSnapshot(named name: String? = nil,
         }
 
         return performSnapshotTest(name, identifier: identifier, isDeviceAgnostic: true, usesDrawRect: usesDrawRect,
-                                   actualExpression: actualExpression, failureMessage: failureMessage,
-                                   pixelTolerance: pixelTolerance, tolerance: tolerance)
+                                   actualExpression: actualExpression,
+                                   failureMessage: failureMessage, tolerance: tolerance)
     }
 }
 
@@ -330,8 +295,7 @@ public func recordSnapshot(named name: String? = nil,
     }
 }
 
-public func recordDeviceAgnosticSnapshot(named name: String? = nil,
-                                         identifier: String? = nil,
+public func recordDeviceAgnosticSnapshot(named name: String? = nil, identifier: String? = nil,
                                          usesDrawRect: Bool = false) -> Predicate<Snapshotable> {
 
     return Predicate.fromDeprecatedClosure { actualExpression, failureMessage in

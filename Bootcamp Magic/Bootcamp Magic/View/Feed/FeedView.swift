@@ -17,13 +17,14 @@ class FeedView: UIView {
     var blurredBackgroundImageView: UIImageView
     var errorLabel: UILabel
     
-    weak var delegate:  ViewDelegate?
+    var delegate:  ViewDelegate
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, delegate: ViewDelegate) {
+        self.delegate = delegate
         searchBar = UISearchBar()
         label = UILabel()
         errorLabel = UILabel()
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
+        collectionView = UICollectionView(frame: frame, collectionViewLayout: .init())
         blurredBackgroundImageView = UIImageView()
         activityView = UIView()
         super.init(frame: frame)

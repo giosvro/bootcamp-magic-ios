@@ -9,10 +9,12 @@ target 'Bootcamp Magic' do
 
   target 'Bootcamp MagicTests' do
     inherit! :search_paths
+
     # Pods for testing
     pod "Quick"
-    pod "Nimble"
-    pod "Nimble-Snapshots"
+    pod 'Nimble', '7.3.4'
+    pod 'Nimble-Snapshots', '6.9.1'
+ 
   end
 
   target 'Bootcamp MagicUITests' do
