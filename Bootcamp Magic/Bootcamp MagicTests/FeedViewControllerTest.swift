@@ -33,39 +33,4 @@ class FeedViewControllerTest: QuickSpec {
         }
     }
     
-//    override func spec() {
-//
-//           describe("LoginView") {
-//
-//               var view: LoginView!
-//
-//               beforeEach {
-//                   view = LoginView()
-//                   view.translatesAutoresizingMaskIntoConstraints = false
-//               }
-//
-//               it("should have a cool layout") {
-//                   expect(view) == recordSnapshot()
-//               }
-//
-//               it("should hide loginButton if user set username only") {
-//                   view.userNameTextField.setTextAndSendEvent("username")
-//
-//                   expect(view) == recordSnapshot()
-//               }
-//
-//               it("should hide loginButton if user set password only") {
-//                   view.passwordTextField.setTextAndSendEvent("password")
-//
-//                   expect(view) == recordSnapshot()
-//               }
-//
-//               it("should show loginButton if user set username and password") {
-//                   view.userNameTextField.setTextAndSendEvent("username")
-//                   view.passwordTextField.setTextAndSendEvent("password")
-//
-//                   expect(view) == recordSnapshot()
-//               }
-//           }
-//       }
 }

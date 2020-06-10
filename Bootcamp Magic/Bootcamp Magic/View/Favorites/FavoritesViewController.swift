@@ -74,9 +74,7 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
 extension FavoritesViewController: ViewDelegate {
     
     func didButtonPressed() {
-        guard let coodinator = coordinator as? FavoritesCoordinator else {
-            return
-        }
+        
     }
 
 }

@@ -9,20 +9,34 @@
 import UIKit
 
 class FeedView: UIView {
+
     
     var searchBar: UISearchBar
-    var label: UILabel
     var activityView: UIView
     var collectionView: UICollectionView
     var blurredBackgroundImageView: UIImageView
-    var errorLabel: UILabel
-    
     var delegate:  ViewDelegate
     
+    var errorLabel: UILabel = {
+        let errorLabel = UILabel()
+        errorLabel.textColor = .white
+        errorLabel.font = UIFont(name: "Gotham-Black", size: 16.0)
+        errorLabel.numberOfLines = 2
+        return errorLabel
+    }()
+    
+    var label: UILabel = {
+          let label = UILabel()
+          label.text = "How about these cards?"
+          label.textColor = .white
+          label.font = UIFont(name: "Gotham-Black", size: 32.0)
+          label.numberOfLines = 2
+          return label
+    }()
+      
     init(frame: CGRect, delegate: ViewDelegate) {
         self.delegate = delegate
         searchBar = UISearchBar()
-        label = UILabel()
         errorLabel = UILabel()
         collectionView = UICollectionView(frame: frame, collectionViewLayout: .init())
         blurredBackgroundImageView = UIImageView()
@@ -81,18 +95,6 @@ extension FeedView: ViewCoding {
     }
     
     func aditionalConfigView() {
-        
-        label.text = "How about these cards?"
-        label.textColor = .white
-        let font = UIFont(name: "Gotham-Black", size: 32.0)
-        label.font = font
-        label.numberOfLines = 2
-        
-        errorLabel.textColor = .white
-        let errorFont = UIFont(name: "Gotham-Black", size: 16.0)
-        errorLabel.font = errorFont
-        errorLabel.numberOfLines = 2
-        
         searchBar.configureSearchBar()
         
         blurredBackgroundImageView.image = UIImage(named: "background")
@@ -103,9 +105,6 @@ extension FeedView: ViewCoding {
         collectionView.setupCollectionView()
         collectionView.register(CardCollectionViewCell.self)
         collectionView.isHidden = true
-        
-        guard let feedViewController = delegate as? FeedViewController else { return }
-        collectionView.delegate = feedViewController
     }
     
 }

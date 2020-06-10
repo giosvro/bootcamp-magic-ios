@@ -30,7 +30,7 @@ class FavoritesCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        var view = UICollectionReusableView()
+        let view = UICollectionReusableView()
 
         return view
     }
