@@ -15,7 +15,6 @@ class FeedView: UIView {
     var activityView: UIView
     var collectionView: UICollectionView
     var blurredBackgroundImageView: UIImageView
-    var delegate:  ViewDelegate
     
     var errorLabel: UILabel = {
         let errorLabel = UILabel()
@@ -34,8 +33,7 @@ class FeedView: UIView {
           return label
     }()
       
-    init(frame: CGRect, delegate: ViewDelegate) {
-        self.delegate = delegate
+    override init(frame: CGRect) {
         searchBar = UISearchBar()
         errorLabel = UILabel()
         collectionView = UICollectionView(frame: frame, collectionViewLayout: .init())

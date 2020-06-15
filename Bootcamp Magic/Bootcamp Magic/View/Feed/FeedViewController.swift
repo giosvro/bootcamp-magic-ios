@@ -25,9 +25,8 @@ class FeedViewController: UIViewController {
     }
     
     override func loadView() {
-        let view = FeedView(frame: .zero, delegate: self)
+        let view = FeedView()
         feedViewModel.delegate = self
-//        view.delegate = self
         view.searchBar.delegate = self
         self.collectionView = view.collectionView
         self.collectionView?.delegate = self

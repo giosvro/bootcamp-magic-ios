@@ -12,23 +12,20 @@ import Nimble_Snapshots
 
 @testable import Bootcamp_Magic
 
-class FeedViewControllerTest: QuickSpec {
+class FeedViewTest: QuickSpec {
     
     override func spec() {
         
         describe("FeedView") {
-            var view: FeedView!
-            let viewController = FeedViewController(feedViewModel: FeedViewModel())
-            
+            var view: FeedView!            
             
             beforeEach {
-                view = FeedView(frame: .zero, delegate: viewController)
+                view = FeedView()
                 view.translatesAutoresizingMaskIntoConstraints = false
             }
             
             it("should have a cool layout") {
                 expect(view).to(haveValidSnapshot())
-//                expect(view).to(haveValidSnapshot(named: "something custom"))
             }
         }
     }
